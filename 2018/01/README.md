@@ -30,7 +30,7 @@ Your puzzle answer was 490.
 
 The first half of this puzzle is complete! It provides one gold star: *
 
-##--- Part Two ---
+## --- Part Two ---
 
 You notice that the device repeats the same frequency change list over and over. To calibrate the device, you need to find the first frequency it reaches twice.
 
