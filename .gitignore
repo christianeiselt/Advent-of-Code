@@ -1,4 +1,4 @@
 .DS_Store
 .project
-/bin/
+.class
 node_modules
