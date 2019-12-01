@@ -41,7 +41,8 @@
 		04B17C5A238B143400386327 = {
 			isa = PBXGroup;
 			children = (
-				04B17C65238B143500386327 /* Advent of Code */,
+				04B17C66238B143500386327 /* main.swift */,
+				04B17C6D238B148400386327 /* 2018 */,
 				04B17C64238B143500386327 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -54,12 +55,11 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		04B17C65238B143500386327 /* Advent of Code */ = {
+		04B17C6D238B148400386327 /* 2018 */ = {
 			isa = PBXGroup;
 			children = (
-				04B17C66238B143500386327 /* main.swift */,
 			);
-			path = "Advent of Code";
+			path = 2018;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
