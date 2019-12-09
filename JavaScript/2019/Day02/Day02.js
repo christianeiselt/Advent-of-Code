@@ -2,68 +2,106 @@
 
 // Convert input.txt in array
 function inputToArray(input) {
-    let fs = require('fs')
-    const splitLines = str => str.split(/\r?\n/);
-    var inputArr = splitLines(fs.readFileSync(input, 'utf8'));
-    let outputArr = [];
-
+    const fs = require('fs');
+    let inputArr = fs.readFileSync(input).toString().split('\n');
     if (inputArr[inputArr.length - 1] == '') {
         inputArr.pop();
     }
-    return inputArr.keys();
-    // return inputArr;
+    let outputArr = inputArr[0].split(',').map(Number);
+    return outputArr;
 }
 
 function runProgram(program) {
-    console.log("Input: " + program);
+    let num1, num2, result;
+    let num1Pos, num2Pos, resultPos;
 
-    let start = 0;
-    while (start < program.length) {
-        console.log("Stelle: " + program[start]);
+    for (let i = 0; i < program.length; i += 4) {
+        num1Pos = program[i + 1];
+        num2Pos = program[i + 2];
+        resultPos = program[i + 3];
 
-        if (program[start] == 1) {
-            program[program[start + 3]] = program[program[start + 1]] + program[program[start + 2]];
-        } else if (program[start] == 2) {
-            program[program[start + 3]] = program[program[start + 1]] * program[program[start + 2]];
-        } else if (program[start] == 99) {
-            return program;
+        num1 = program[num1Pos];
+        num2 = program[num2Pos];
+
+        if (program[i] == 1) {
+            result = num1 + num2;
+        } else if (program[i] == 2) {
+            result = num1 * num2;
+        } else if (program[i] == 99) {
+            break;
+        } else {
+            console.log("Error: opcode not found!");
         }
-
-        start += 4;
+        program[resultPos] = result;
     }
-
     return program;
 }
 
-function splitIntoPrograms(programfile) {
-    let programs = [];
-    let program = [];
-    console.log(programfile);
+function solveA(inputPath) {
+    // push input in array
+    let inputArr = inputToArray(inputPath);
 
-    for (let i = 0; i < programfile.length; i++) {
-        console.log(programfile.length);
-        let nextInt = parseInt(programfile[i]);
-        if (!isNaN(nextInt)) {
-            console.log("nextInt: " + nextInt);
-            if (nextInt != 99) {
-                program.push(nextInt);
-                console.log("program: " + program);
-            } else {
-                program.push(nextInt);
-                programs.push(program);
-                program = [];
-                console.log("Program: " + program);
+    // prepare program
+    inputArr[1] = 12;
+    inputArr[2] = 2;
+    console.log("Part One: " + runProgram(inputArr)[0]);
+}
+
+function solveB(inputPath) {
+    let seek = 19690720;
+    let found = false;
+
+    for (let verb = 0; verb < 100; verb++) {
+        for (let noun = 0; noun < 100; noun++) {
+            // push input in array
+            let inputArr = inputToArray(inputPath);
+
+            // prepare program
+            inputArr[1] = noun;
+            inputArr[2] = verb;
+
+            let program = runProgram(inputArr);
+            // console.log(program[0]);
+            if (program[0] == seek) {
+                found = true;
+                console.log("Part Two: Number " + seek + " found with verb " + verb + " and noun " + noun + " (Result: " + (100 * noun + verb) + ").");
             }
         }
     }
-    return programs;
 }
 
+function runTests() {
+    let tests = {
+        "TestA1": [
+            [1, 0, 0, 0, 99],
+            [2, 0, 0, 0, 99]
+        ],
+        "TestA2": [
+            [2, 3, 0, 3, 99],
+            [2, 3, 0, 6, 99]
+        ],
+        "TestA3": [
+            [2, 4, 4, 5, 99, 0],
+            [2, 4, 4, 5, 99, 9801]
+        ],
+        "TestA4": [
+            [1, 1, 1, 4, 2, 5, 6, 0, 99],
+            [30, 1, 1, 4, 2, 5, 6, 0, 99]
+        ]
+    };
+    let succeed = true;
 
+    for (let key in tests) {
+        let result = runProgram(tests[key][0]);
+        let expResult = tests[key][1];
+        if (JSON.stringify(result) != JSON.stringify(expResult)) {
+            succeed = false;
+        }
+    }
+    return succeed;
+}
 
-// console.log(inputToArray('2019/Day02/input.txt'));
-
-console.log("Test A1: " + ([2, 0, 0, 0, 99] == runProgram([1, 0, 0, 0, 99])) + " (" + runProgram([1, 0, 0, 0, 99]) + ")");
-console.log("Test A1: " + ([2, 3, 0, 6, 99] == runProgram([2, 3, 0, 3, 99])) + " (" + runProgram([2, 3, 0, 3, 99]) + ")");
-console.log("Test A1: " + ([2, 4, 4, 5, 99, 9801] == runProgram([2, 4, 4, 5, 99, 0])) + " (" + runProgram([2, 4, 4, 5, 99, 0]) + ")");
-console.log("Test A1: " + ([30, 1, 1, 4, 2, 5, 6, 0, 99] == runProgram([1, 1, 1, 4, 2, 5, 6, 0, 99])) + " (" + runProgram([1, 1, 1, 4, 2, 5, 6, 0, 99]) + ")");
+if (runTests() == true) {
+    solveA('2019/Day02/input.txt');
+    solveB('2019/Day02/input.txt');
+}
