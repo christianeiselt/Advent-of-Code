@@ -1,11 +1,10 @@
+// Solution to https://adventofcode.com/2019/day/1
+
 // Convert input.txt in array
 var fs = require('fs')
 const text = fs.readFileSync('2019/Day01/input.txt', 'utf8')
 const splitLines = str => str.split(/\r?\n/);
 var massPerModule = splitLines(text);
-
-let partA = 0;
-let partB = 0;
 
 function calcFuelForModule(mass) {
     return Math.floor(mass / 3) - 2;

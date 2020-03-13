@@ -1,0 +1,11 @@
+/Users/mac/git/GitHub/christianeiselt/Advent-of-Code/CSharp/obj/Debug/netcoreapp3.0/CSharp.csprojAssemblyReference.cache
+/Users/mac/git/GitHub/christianeiselt/Advent-of-Code/CSharp/obj/Debug/netcoreapp3.0/CSharp.AssemblyInfoInputs.cache
+/Users/mac/git/GitHub/christianeiselt/Advent-of-Code/CSharp/obj/Debug/netcoreapp3.0/CSharp.AssemblyInfo.cs
+/Users/mac/git/GitHub/christianeiselt/Advent-of-Code/CSharp/bin/Debug/netcoreapp3.0/CSharp
+/Users/mac/git/GitHub/christianeiselt/Advent-of-Code/CSharp/bin/Debug/netcoreapp3.0/CSharp.deps.json
+/Users/mac/git/GitHub/christianeiselt/Advent-of-Code/CSharp/bin/Debug/netcoreapp3.0/CSharp.runtimeconfig.json
+/Users/mac/git/GitHub/christianeiselt/Advent-of-Code/CSharp/bin/Debug/netcoreapp3.0/CSharp.runtimeconfig.dev.json
+/Users/mac/git/GitHub/christianeiselt/Advent-of-Code/CSharp/bin/Debug/netcoreapp3.0/CSharp.dll
+/Users/mac/git/GitHub/christianeiselt/Advent-of-Code/CSharp/bin/Debug/netcoreapp3.0/CSharp.pdb
+/Users/mac/git/GitHub/christianeiselt/Advent-of-Code/CSharp/obj/Debug/netcoreapp3.0/CSharp.dll
+/Users/mac/git/GitHub/christianeiselt/Advent-of-Code/CSharp/obj/Debug/netcoreapp3.0/CSharp.pdb
