@@ -20,7 +20,7 @@ while (!duplicate) {
       if (!frequencies.hasOwnProperty(resultingFrequency)) {
         frequencies[resultingFrequency] = resultingFrequency;
       } else {
-        if (duplicate == false) {
+        if (duplicate === false) {
           duplicate = true;
           duplicateFrequency = resultingFrequency;
         }
@@ -28,14 +28,14 @@ while (!duplicate) {
     }
   }
 
-  if (sum == 0) {
+  if (sum === 0) {
     sum = resultingFrequency;
   }
   loop++;
 }
 
 console.log("The resulting frequency after 1 loop is: " + sum);
-if (duplicate == true) {
+if (duplicate === true) {
   console.log(
     "The first frequency was reached twice during the loop " +
       loop +
