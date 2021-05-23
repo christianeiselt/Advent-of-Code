@@ -7,6 +7,4 @@ import Foundation
 let str = try! String(contentsOfFile: "2019/Day02/input.txt");
 // let str = try! String(contentsOfFile: CommandLine.arguments[1])
 // calc(inputStr: str)
-println(str);
-
-
+println(str)
