@@ -21,7 +21,7 @@ function containsMultiDigit(number) {
     let numArr = splitInDigits(number);
 
     for (let i=1; i<numArr.length; i++) {
-        if (numArr[i] == numArr[i-1]) {
+        if (numArr[i] === numArr[i-1]) {
             return true;
         }
     }
@@ -36,7 +36,7 @@ function containsDoubleDigit(number) {
     
     for (let i=0; i<numArr.length; i++) {
         if (numArr[i] != currentNum) {
-            if (countCurrentNum == 2) {
+            if (countCurrentNum === 2) {
                 return true;
             }
             currentNum = numArr[i];
@@ -46,7 +46,7 @@ function containsDoubleDigit(number) {
         }
    }
     
-    if (countCurrentNum % 2 == 0) {
+    if (countCurrentNum % 2 === 0) {
         return true;
     } else {
         return false;
@@ -58,11 +58,11 @@ function countCandidates (range, multiDigitsAllowed) {
     let passwords2 = [];
     
     for (i=start; i<=end; i++) {
-        if (rising(i) == true) {
-            if (part == 1 && containsMultiDigit(i) == true) {
+        if (rising(i) === true) {
+            if (part === 1 && containsMultiDigit(i) === true) {
                 candidates.push(i);
             }
-            if (part == 2 && containsDoubleDigit(i) == true) {
+            if (part === 2 && containsDoubleDigit(i) === true) {
                 candidates.push(i);
             }
         }
