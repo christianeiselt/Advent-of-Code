@@ -25,7 +25,7 @@ function calcTotalFuelForModule(mass) {
 function calcModFuel() {
   let fuel = 0;
   for (let i = 0; i < massPerModule.length; i++) {
-    let mass = parseInt(massPerModule[i]);
+    let mass = parseInt(massPerModule[i],10);
 
     if (!isNaN(mass)) {
       fuel += calcFuelForModule(mass);
