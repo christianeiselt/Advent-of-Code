@@ -71,7 +71,7 @@ function countCandidates (range, multiDigitsAllowed) {
     console.log(candidates.length);
 }
 
-console.log(true == containsDoubleDigit(111111));
+console.log(true === containsDoubleDigit(111111));
 
 solveA();
 
