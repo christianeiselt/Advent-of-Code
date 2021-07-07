@@ -73,7 +73,7 @@ public class Day01 {
 
         System.out.println("The resulting frequency is: " + sum);
 
-        if (duplicate == true) {
+        if (duplicate) {
             System.out.println("The first frequency reached twice is: " + duplicateFrequency);
         }
     }
