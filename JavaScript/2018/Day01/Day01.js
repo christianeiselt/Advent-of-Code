@@ -34,8 +34,10 @@ while (!duplicate) {
   loop++;
 }
 
+// eslint-disable-next-line no-console
 console.log("The resulting frequency after 1 loop is: " + sum);
 if (duplicate === true) {
+  // eslint-disable-next-line no-console
   console.log(
     "The first frequency was reached twice during the loop " +
       loop +
