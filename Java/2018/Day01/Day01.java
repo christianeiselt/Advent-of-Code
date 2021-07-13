@@ -60,7 +60,7 @@ public class Day01 {
                 if (!(frequencies.contains(resultingFrequency))) {
                     frequencies.add(resultingFrequency);
                 } else {
-                    if (duplicate == false) {
+                    if (!duplicate) {
                         duplicate = true;
                         duplicateFrequency = resultingFrequency.intValue();
                     }
