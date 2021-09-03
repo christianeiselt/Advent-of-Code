@@ -18,7 +18,9 @@ function check(pw,triplesNotAllowed) {
     if (pwArray.length !== 6) return false;
     let doubleFound = false;
     for (let i = 1; i < pwArray.length; i++) {
-        if (pwArray[i - 1] > pwArray[i]) return false;
+        if (pwArray[i - 1] > pwArray[i]) {
+          return false;
+        }
         if (!doubleFound) {
             if (triplesNotAllowed){
                 if (i === 1) {
