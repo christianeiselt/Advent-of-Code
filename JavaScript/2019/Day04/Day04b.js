@@ -5,7 +5,9 @@ let passwords2 = [];
 
 // Quick and dirty
 for (let pw = range.min; pw <= range.max; pw++) {
-    if (check(pw)) passwords.push(pw);
+    if (check(pw)) {
+        passwords.push(pw);
+    }
     if (check(pw,true)) passwords2.push(pw);
 }
 
