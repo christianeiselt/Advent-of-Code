@@ -23,11 +23,11 @@ function runProgram(program) {
         num1 = program[num1Pos];
         num2 = program[num2Pos];
 
-        if (program[i] == 1) {
+        if (program[i] === 1) {
             result = num1 + num2;
-        } else if (program[i] == 2) {
+        } else if (program[i] === 2) {
             result = num1 * num2;
-        } else if (program[i] == 99) {
+        } else if (program[i] === 99) {
             break;
         } else {
             console.log("Error: opcode not found!");
@@ -62,7 +62,7 @@ function solveB(inputPath) {
 
             let program = runProgram(inputArr);
             // console.log(program[0]);
-            if (program[0] == seek) {
+            if (program[0] === seek) {
                 found = true;
                 console.log("Part Two: Number " + seek + " found with verb " + verb + " and noun " + noun + " (Result: " + (100 * noun + verb) + ").");
             }
@@ -101,7 +101,7 @@ function runTests() {
     return succeed;
 }
 
-if (runTests() == true) {
+if (runTests() === true) {
     solveA('2019/Day02/input.txt');
     solveB('2019/Day02/input.txt');
 }
