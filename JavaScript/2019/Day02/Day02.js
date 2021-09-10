@@ -3,7 +3,7 @@
 // Convert input.txt in array
 function inputToArray(input) {
     const fs = require('fs');
-    let inputArr = fs.readFileSync(input).toString().split('\n');
+    let inputArr = fs.readFileSync(input).toString().split("\n");
     if (inputArr[inputArr.length - 1] == '') {
         inputArr.pop();
     }
