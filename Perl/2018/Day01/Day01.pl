@@ -9,7 +9,7 @@ sub getFileContent
 
   open(my $fh, '<:encoding(UTF-8)', $file)
     or die "Could not open file '$file' $!";
- 
+
   while (my $row = <$fh>)
   {
     chomp $row;
@@ -17,7 +17,7 @@ sub getFileContent
     my $number = $row;
 	push(@output, $number);
   }
-  
+
   close($fh);
 
   return \@output;
@@ -27,9 +27,9 @@ sub getResultingFrequency
 {
   my $refInput = shift;
   my @changes = @{$refInput};
-  
+
   my $resultingFrequency = 0;
-  
+
   foreach (@changes){
 	$resultingFrequency += $_;
   }
@@ -45,11 +45,10 @@ sub getDuplicate
 	my %frequencies;
 	my $currentFrequency;
 	my $loop;
-	
+
 	while(1){
 		$loop++;
 		for my $change (@changes){
-			print($loop." ". $currentFrequency . " " . $change . " " . ($currentFrequency + $change) . "\n");
 			$currentFrequency += $change;
 			unless($frequencies{$currentFrequency}){
 				$frequencies{$currentFrequency} = $currentFrequency;
@@ -60,5 +59,5 @@ sub getDuplicate
 	}
 }
 
-print(getResultingFrequency(getFileContent("../../../../Input/2018/Day01/input.txt"))."\n");
-print("Duplicate found: ".getDuplicate(getFileContent("../../../../Input/2018/Day01/input.txt"))."\n");
+print("Resulting Frequency; ".getResultingFrequency(getFileContent("2018/Day01/input.txt"))."\n");
+print("Duplicate found: ".getDuplicate(getFileContent("2018/Day01/input.txt"))."\n");
