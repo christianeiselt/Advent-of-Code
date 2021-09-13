@@ -17,7 +17,9 @@ console.log(`Part 2: ${passwords2.length} passwords`);
 function check(pw,triplesNotAllowed) {
     //if (pw < range.min || pw > range.max) return false;
     const pwArray = Array.from(String(pw), Number);
-    if (pwArray.length !== 6) return false;
+    if (pwArray.length !== 6) {
+	return false;
+    }
     let doubleFound = false;
     for (let i = 1; i < pwArray.length; i++) {
         if (pwArray[i - 1] > pwArray[i]) {
