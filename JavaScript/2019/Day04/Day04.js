@@ -53,7 +53,7 @@ function containsDoubleDigit(number) {
   }
 }
 
-function countCandidates(range, multiDigitsAllowed) {
+function countCandidates(range, part) {
   let passwords = [];
   let passwords2 = [];
 
