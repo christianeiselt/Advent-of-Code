@@ -35,7 +35,7 @@ function containsDoubleDigit(number) {
     let countCurrentNum = 0;
     
     for (let i=0; i<numArr.length; i++) {
-        if (numArr[i] != currentNum) {
+        if (numArr[i] !== currentNum) {
             if (countCurrentNum === 2) {
                 return true;
             }
