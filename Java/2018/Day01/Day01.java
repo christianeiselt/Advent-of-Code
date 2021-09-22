@@ -60,7 +60,7 @@ public class Day01 {
                 if (!(frequencies.contains(resultingFrequency))) {
                     frequencies.add(resultingFrequency);
                 } else {
-                    if (duplicate == false) {
+                    if (!duplicate) {
                         duplicate = true;
                         duplicateFrequency = resultingFrequency.intValue();
                     }
@@ -73,7 +73,7 @@ public class Day01 {
 
         System.out.println("The resulting frequency is: " + sum);
 
-        if (duplicate == true) {
+        if (duplicate) {
             System.out.println("The first frequency reached twice is: " + duplicateFrequency);
         }
     }

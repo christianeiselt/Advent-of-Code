@@ -5,7 +5,9 @@ let passwords2 = [];
 
 // Quick and dirty
 for (let pw = range.min; pw <= range.max; pw++) {
-    if (check(pw)) passwords.push(pw);
+    if (check(pw)) {
+        passwords.push(pw);
+    }
     if (check(pw,true)) passwords2.push(pw);
 }
 
@@ -20,7 +22,9 @@ function check(pw,triplesNotAllowed) {
     }
     let doubleFound = false;
     for (let i = 1; i < pwArray.length; i++) {
-        if (pwArray[i - 1] > pwArray[i]) return false;
+        if (pwArray[i - 1] > pwArray[i]) {
+          return false;
+        }
         if (!doubleFound) {
             if (triplesNotAllowed){
                 if (i === 1) {
