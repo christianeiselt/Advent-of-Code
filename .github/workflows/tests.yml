@@ -1,0 +1,29 @@
+name: Tests
+
+on:
+  push:
+    branches:
+      - '*'
+    tags-ignore:
+      - '*'
+  pull_request:
+
+jobs:
+  swift-job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Platform check
+        run: uname -a
+
+      - name: swift info
+        run: swift --version
+
+      - name: Build
+        run: swift build -v
+
+      - name: Run tests
+        run: swift test -v
+        
