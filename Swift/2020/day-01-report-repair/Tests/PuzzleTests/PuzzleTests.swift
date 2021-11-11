@@ -8,6 +8,6 @@ final class PuzzleTests: XCTestCase {
     }
 
     static var allTests = [
-        ("testExample", testExample),
+        ("testExample", testExample)
     ]
 }
