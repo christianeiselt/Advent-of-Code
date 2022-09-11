@@ -19,8 +19,8 @@ github:
 
 tasks:
   - name: Terminal 1
-    init: npm install
-          echo 'init script' # runs during prebuild
+    init: brew install swift
+          brew install tree
     command: echo 'start script'
 
 # List the ports to expose. Learn more https://www.gitpod.io/docs/config-ports/
