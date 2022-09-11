@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
-public class Day02 {
+public class solution {
 
 	private static final String INPUT_TXT = "input.txt";
 
@@ -41,14 +41,15 @@ public class Day02 {
 
 	public static void solve(final String path) {
 
-        final ArrayList<String> programs = getContent(path);
-        System.out.println(programs.get(0).getClass().getName());
-        Array programCodes[] = programs.split(",");
+        final ArrayList<String> programsInput = getContent(path);
+        //System.out.println(programsInput.get(0).getClass().getName());
+        String programs = programsInput.get(0);
+        String[] programCodes = programs.split(",");
 
         for (int i = 0; i<programCodes.length; i++) {
-            System.out.println(programCodes[i]);
+            //System.out.println(programCodes[i]);
         }
-        // System.out.println("The resulting frequency is: " + sum);
+        //System.out.println("The resulting frequency is: " + sum);
 
     }
 
