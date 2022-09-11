@@ -1,6 +1,6 @@
 # Advent-of-Code
 
-Contains solutions to the puzzles for the year(s):  
+Contains solutions to the puzzles for the years:  
 [2015](https://adventofcode.com/2015/)  
 [2016](https://adventofcode.com/2016/)  
 [2017](https://adventofcode.com/2017/)  
@@ -9,3 +9,11 @@ Contains solutions to the puzzles for the year(s):
 [2020](https://adventofcode.com/2020/)  
 [2021](https://adventofcode.com/2021/)  
 [2022](https://adventofcode.com/2022/)  
+
+# Run the solutions
+Change into directory that contains the solution to run.
+## Perl
+`perl solution.pl`
+
+## Swift
+`swift solution.swift`

@@ -59,5 +59,5 @@ sub getDuplicate
 	}
 }
 
-print("Resulting Frequency; ".getResultingFrequency(getFileContent("2018/Day01/input.txt"))."\n");
-print("Duplicate found: ".getDuplicate(getFileContent("2018/Day01/input.txt"))."\n");
+print("Resulting Frequency; ".getResultingFrequency(getFileContent("input.txt"))."\n");
+print("Duplicate found: ".getDuplicate(getFileContent("input.txt"))."\n");
