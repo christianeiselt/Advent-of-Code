@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
-public class solution {
+public class Solution {
 
 	private static final String INPUT_TXT = "input.txt";
 
