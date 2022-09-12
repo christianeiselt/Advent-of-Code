@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
+package Solution;
+
 public class Solution {
 
 	private static final String INPUT_TXT = "input.txt";
