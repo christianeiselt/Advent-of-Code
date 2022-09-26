@@ -12,6 +12,7 @@ Contains solutions to the puzzles for the years:
 
 # Run the solutions
 Change into directory that contains the solution to run.
+
 ## Java
 `java Solution.java`
 
