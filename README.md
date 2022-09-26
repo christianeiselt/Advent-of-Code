@@ -13,6 +13,9 @@ Contains solutions to the puzzles for the years:
 # Run the solutions
 Change into directory that contains the solution to run.
 
+## Java
+`javac Day01.java`
+
 ## JavaScript
 `node solution.js`
 
