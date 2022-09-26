@@ -2,6 +2,7 @@
 
 // Convert input.txt in array
 function inputToArray(input) {
+    console.log(input);
     let inputArr = fs.readFileSync(input).toString().split("\n");
     const fs = require("fs");
     let inputArr = fs.readFileSync(input).toString().split('\n');
@@ -103,6 +104,6 @@ function runTests() {
 }
 
 if (runTests() === true) {
-    solveA('2019/Day02/input.txt');
-    solveB('2019/Day02/input.txt');
+    solveA('./input.txt');
+    solveB('./input.txt');
 }

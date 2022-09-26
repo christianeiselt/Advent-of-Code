@@ -14,7 +14,7 @@ Contains solutions to the puzzles for the years:
 Change into directory that contains the solution to run.
 
 ## Java
-`javac Day01.java`
+`java Solution.java`
 
 ## JavaScript
 `node solution.js`
