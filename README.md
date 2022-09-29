@@ -24,3 +24,6 @@ Change into directory that contains the solution to run.
 
 ## Swift
 `swift solution.swift`
+
+## TypeScript
+`tsc solution.ts && node solution.js`
