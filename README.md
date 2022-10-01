@@ -26,4 +26,4 @@ Change into directory that contains the solution to run.
 `swift solution.swift`
 
 ## TypeScript
-`tsc solution.ts && node solution.js`
+`deno run --allow-read solution.ts`
