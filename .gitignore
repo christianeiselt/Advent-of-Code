@@ -4,3 +4,5 @@ node_modules
 .vscode/
 core.*
 **/*.class
+**/typescript/*.js
+*.json
