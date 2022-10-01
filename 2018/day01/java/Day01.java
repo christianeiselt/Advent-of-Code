@@ -1,14 +1,10 @@
 // https://adventofcode.com/2018/day/1
 
-import java.io.File;
 import java.io.IOException;
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.net.URISyntaxException;
-import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 
 public class Day01 {
 
