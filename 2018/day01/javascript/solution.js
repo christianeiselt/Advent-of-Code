@@ -1,23 +1,26 @@
-var fs = require("fs");
+// @ts-ignore
+const fs = require("fs");
 const text = fs.readFileSync("input.txt", "utf8");
-const splitLines = (str) => str.split(/\r?\n/);
-var changes = splitLines(text);
+const splitLines = (/** @type {string} */ str) => str.split(/\r?\n/);
+const changes = splitLines(text);
 
-var resultingFrequency = 0;
-var frequencies = {};
-var duplicateFrequency = 0;
-var duplicate = false;
-var sum = 0;
-var loop = 0;
+let resultingFrequency = 0;
+const frequencies = {};
+let duplicateFrequency = 0;
+let duplicate = false;
+let sum = 0;
+let loop = 0;
 
 while (!duplicate) {
-  for (var i = 0; i < changes.length; i++) {
-    let number = parseInt(changes[i], 10);
+  for (let i = 0; i < changes.length; i++) {
+    // @ts-ignore: typescript
+    const change = parseInt(changes[i], 10);
 
-    if (!isNaN(number)) {
-      resultingFrequency += number;
+    if (!isNaN(change)) {
+      resultingFrequency += change;
 
-      if (!frequencies.hasOwnProperty(resultingFrequency)) {
+      if (!Object.prototype.hasOwnProperty.call(frequencies, resultingFrequency)) {
+        // @ts-ignore: typescript
         frequencies[resultingFrequency] = resultingFrequency;
       } else {
         if (duplicate === false) {
