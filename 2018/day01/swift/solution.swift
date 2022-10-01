@@ -1,9 +1,9 @@
-func calc(inputStr: String) {
-    let numbers = inputStr.split(separator: "\n").map({ Int($0)! })
-    print(numbers.reduce(0, +))
+func partOne(changes: String) {
+    let resultingFrequency = changes.split(separator: "\n").map({ Int($0)! })
+    print("The resulting frequency after 1 loop is: \(resultingFrequency.reduce(0, +)).")
 }
 
 import Foundation
-let str = try! String(contentsOfFile: "input.txt")
-//let str = try! String(contentsOfFile: CommandLine.arguments[1])
-calc(inputStr: str)
+let input = try! String(contentsOfFile: "input.txt")
+
+partOne(changes: input)
