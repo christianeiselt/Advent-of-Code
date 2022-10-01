@@ -59,5 +59,5 @@ sub getDuplicate
 	}
 }
 
-print("Resulting Frequency; ".getResultingFrequency(getFileContent("input.txt"))."\n");
-print("Duplicate found: ".getDuplicate(getFileContent("input.txt"))."\n");
+print("The resulting frequency after 1 loop is; ".getResultingFrequency(getFileContent("input.txt"))."\n");
+print("The first frequency reached twice is: ".getDuplicate(getFileContent("input.txt"))."\n");
