@@ -1,15 +1,22 @@
 // Solution to https://adventofcode.com/2019/day/1
 
 // Convert input.txt in array
-var fs = require("fs");
-const text = fs.readFileSync("2019/Day01/input.txt", "utf8");
-const splitLines = (str) => str.split(/\r?\n/);
-var massPerModule = splitLines(text);
+// @ts-ignore: ignore ts rules
+const fs = require("fs");
+const text = fs.readFileSync("./input.txt", "utf8");
+const splitLines = (/** @type {string} */ str) => str.split(/\r?\n/);
+const massPerModule = splitLines(text);
 
+/**
+* @param {number} mass
+*/
 function calcFuelForModule(mass) {
   return Math.floor(mass / 3) - 2;
 }
 
+/**
+* @param {number} mass
+*/
 function calcTotalFuelForModule(mass) {
   let totalFuelForModule = calcFuelForModule(mass);
   let addFuel = calcFuelForModule(totalFuelForModule);
@@ -25,7 +32,8 @@ function calcTotalFuelForModule(mass) {
 function calcModFuel() {
   let fuel = 0;
   for (let i = 0; i < massPerModule.length; i++) {
-    let mass = parseInt(massPerModule[i],10);
+    // @ts-ignore: ignore ts rules
+    const mass = parseInt(massPerModule[i],10);
 
     if (!isNaN(mass)) {
       fuel += calcFuelForModule(mass);
@@ -38,9 +46,11 @@ function calcFuelForLaunch() {
   let fuel = 0;
 
   for (let i = 0; i < massPerModule.length; i++) {
-    let mass = parseInt(massPerModule[i]);
+    // @ts-ignore: ignore ts rules
+    const mass = parseInt(massPerModule[i]);
 
     if (!isNaN(mass)) {
+      // @ts-ignore: ignore ts rules
       fuel += calcTotalFuelForModule(massPerModule[i]);
     }
   }
