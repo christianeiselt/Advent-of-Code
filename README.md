@@ -1,4 +1,5 @@
 # Advent-of-Code
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/46ac6280fbca4de38faa568d5f9b7599)](https://www.codacy.com/gh/christianeiselt/Advent-of-Code/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=christianeiselt/Advent-of-Code&amp;utm_campaign=Badge_Grade)
 
 Contains solutions to the puzzles for the years:  
 [2015](https://adventofcode.com/2015/)  
