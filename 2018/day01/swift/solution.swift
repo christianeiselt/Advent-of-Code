@@ -4,6 +4,6 @@ func partOne(changes: String) {
 }
 
 import Foundation
-let input = try! String(contentsOfFile: "input.txt")
+let input = try String(contentsOfFile: "input.txt")
 
 partOne(changes: input)
