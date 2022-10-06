@@ -3,7 +3,7 @@
 // Convert input.txt in array
 // @ts-ignore: ignore ts rules
 const fs = require("fs");
-const text = fs.readFileSync("./input.txt", "utf8");
+const text = fs.readFileSync("../input.txt", "utf8");
 const splitLines = (/** @type {string} */ str) => str.split(/\r?\n/);
 const massPerModule = splitLines(text);
 

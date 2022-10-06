@@ -1,18 +1,19 @@
 // Solution to https://adventofcode.com/2019/day/2
+const fs = require("fs");
 
 // Convert input.txt in array
+// @ts-ignore: ignore ts rules
 function inputToArray(input) {
     console.log(input);
-    let inputArr = fs.readFileSync(input).toString().split("\n");
-    const fs = require("fs");
-    let inputArr = fs.readFileSync(input).toString().split('\n');
+    const inputArr = fs.readFileSync(input).toString().split("\n");
     if (inputArr[inputArr.length - 1] == '') {
         inputArr.pop();
     }
-    let outputArr = inputArr[0].split(',').map(Number);
+    const outputArr = inputArr[0].split(',').map(Number);
     return outputArr;
 }
 
+// @ts-ignore: ignore ts rules
 function runProgram(program) {
     let num1, num2, result;
     let num1Pos, num2Pos, resultPos;
@@ -39,9 +40,10 @@ function runProgram(program) {
     return program;
 }
 
+// @ts-ignore: ignore ts rules
 function solveA(inputPath) {
     // push input in array
-    let inputArr = inputToArray(inputPath);
+    const inputArr = inputToArray(inputPath);
 
     // prepare program
     inputArr[1] = 12;
@@ -49,31 +51,32 @@ function solveA(inputPath) {
     console.log("Part One: " + runProgram(inputArr)[0]);
 }
 
+// @ts-ignore: ignore ts rules
 function solveB(inputPath) {
-    let seek = 19690720;
+    const seek = 19690720;
     let found = false;
 
     for (let verb = 0; verb < 100; verb++) {
         for (let noun = 0; noun < 100; noun++) {
             // push input in array
-            let inputArr = inputToArray(inputPath);
+            const inputArr = inputToArray(inputPath);
 
             // prepare program
             inputArr[1] = noun;
             inputArr[2] = verb;
 
-            let program = runProgram(inputArr);
+            const program = runProgram(inputArr);
             // console.log(program[0]);
             if (program[0] === seek) {
                 found = true;
-                console.log("Part Two: Number " + seek + " found with verb " + verb + " and noun " + noun + " (Result: " + (100 * noun + verb) + ").");
+                console.log("Part Two: Number " + seek + " found (" + found +") with verb " + verb + " and noun " + noun + " (Result: " + (100 * noun + verb) + ").");
             }
         }
     }
 }
 
 function runTests() {
-    let tests = {
+    const tests = {
         "TestA1": [
             [1, 0, 0, 0, 99],
             [2, 0, 0, 0, 99]
@@ -93,9 +96,11 @@ function runTests() {
     };
     let succeed = true;
 
-    for (let key in tests) {
-        let result = runProgram(tests[key][0]);
-        let expResult = tests[key][1];
+    for (const key in tests) {
+        // @ts-ignore: ignore ts rules
+        const result = runProgram(tests[key][0]);
+        // @ts-ignore: ignore ts rules
+        const expResult = tests[key][1];
         if (JSON.stringify(result) != JSON.stringify(expResult)) {
             succeed = false;
         }
@@ -104,6 +109,6 @@ function runTests() {
 }
 
 if (runTests() === true) {
-    solveA('./input.txt');
-    solveB('./input.txt');
+    solveA('../input.txt');
+    solveB('../input.txt');
 }
