@@ -6,6 +6,7 @@ core.*
 **/*.class
 **/typescript/*.js
 *.json
+megalinter-reports
 
 ################################################################################## VISUAL STUDIO ##
 ## Ignore Visual Studio temporary files, build results, and
