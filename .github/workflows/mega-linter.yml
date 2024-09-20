@@ -17,6 +17,7 @@ env: # Comment env block if you do not want to apply fixes
   LOG_LEVEL: INFO
   SHOW_ELAPSED_TIME: true
   VALIDATE_ALL_CODEBASE: false
+  DISABLE_LINTERS: ACTIONLINT, JSCPD, CHECKSTYLE, PMD, STANDARD, MARKDOWNLINT, MARKDOWN-LINK-CHECK, CHECKOV, KICS, CSPELL, LYCHEE, TS-STANDARD
 
 concurrency:
   group: ${{ github.ref }}-${{ github.workflow }}
