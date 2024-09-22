@@ -5,7 +5,6 @@ node_modules
 core.*
 **/*.class
 **/typescript/*.js
-*.json
 megalinter-reports
 
 ################################################################################## VISUAL STUDIO ##
