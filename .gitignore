@@ -5,7 +5,8 @@ node_modules
 core.*
 **/*.class
 **/typescript/*.js
-*.json
+megalinter-reports
+.idea
 
 ################################################################################## VISUAL STUDIO ##
 ## Ignore Visual Studio temporary files, build results, and
