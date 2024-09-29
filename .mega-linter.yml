@@ -12,5 +12,6 @@ DISABLE:
   - ACTION
   - MARKDOWN
   - REPOSITORY
+  - SPELL
 FILEIO_REPORTER: false
 # DISABLE_ERRORS: true # Uncomment if you want MegaLinter to detect errors but not block CI to pass
