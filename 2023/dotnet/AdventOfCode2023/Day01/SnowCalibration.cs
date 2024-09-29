@@ -4,19 +4,20 @@ namespace AdventOfCode2023.Day01;
 
 public partial class SnowCalibration(int part)
 {
-    private static readonly Dictionary<string, string> SpelledOutDigits = new()
-    {
-        ["zero"] = "0",
-        ["one"] = "1",
-        ["two"] = "2",
-        ["three"] = "3",
-        ["four"] = "4",
-        ["five"] = "5",
-        ["six"] = "6",
-        ["seven"] = "7",
-        ["eight"] = "8",
-        ["nine"] = "9"
-    };
+    private static readonly Dictionary<string, string> SpelledOutDigits =
+        new()
+        {
+            ["zero"] = "0",
+            ["one"] = "1",
+            ["two"] = "2",
+            ["three"] = "3",
+            ["four"] = "4",
+            ["five"] = "5",
+            ["six"] = "6",
+            ["seven"] = "7",
+            ["eight"] = "8",
+            ["nine"] = "9",
+        };
 
     public int ExtractCalibrationValue(string line)
     {
@@ -30,8 +31,8 @@ public partial class SnowCalibration(int part)
     {
         return part switch
         {
-            1 => MyRegex().Match(line).Value,  // Find the first numeric digit for part 1
-            _ => FindDigitWithLowestIndex(line)
+            1 => MyRegex().Match(line).Value, // Find the first numeric digit for part 1
+            _ => FindDigitWithLowestIndex(line),
         };
     }
 
@@ -39,12 +40,12 @@ public partial class SnowCalibration(int part)
     {
         return part switch
         {
-            1 => MyRegex().Match(new string(line.Reverse().ToArray())).Value,  // Find the last numeric digit for part 1
-            _ => FindDigitWithHighestIndex(line)
+            1 => MyRegex().Match(new string(line.Reverse().ToArray())).Value, // Find the last numeric digit for part 1
+            _ => FindDigitWithHighestIndex(line),
         };
     }
 
-    private string FindDigitWithLowestIndex(string line)
+    private static string FindDigitWithLowestIndex(string line)
     {
         var lowestIndex = int.MaxValue;
         string firstDigit = string.Empty;
@@ -73,14 +74,17 @@ public partial class SnowCalibration(int part)
         return firstDigit;
     }
 
-    private string FindDigitWithHighestIndex(string line)
+    private static string FindDigitWithHighestIndex(string line)
     {
         var (highestIndex, lastDigit) = (-1, string.Empty);
 
         // Check numeric digits and update the highest index
         foreach (Match match in MyRegex().Matches(line))
         {
-            (highestIndex, lastDigit) = (match.Index > highestIndex ? match.Index : highestIndex, match.Value);
+            (highestIndex, lastDigit) = (
+                match.Index > highestIndex ? match.Index : highestIndex,
+                match.Value
+            );
         }
 
         // Check spelled-out digits and update the highest index
@@ -96,11 +100,10 @@ public partial class SnowCalibration(int part)
         return lastDigit;
     }
 
-    public int CalculateTotalCalibration(List<string> lines)
-        => lines.Sum(ExtractCalibrationValue);
+    public int CalculateTotalCalibration(List<string> lines) => lines.Sum(ExtractCalibrationValue);
 
-    public List<string> ReadLinesFromFile(string filePath)
-        => File.Exists(filePath)
+    public static List<string> ReadLinesFromFile(string filePath) =>
+        File.Exists(filePath)
             ? File.ReadAllLines(filePath).ToList()
             : throw new FileNotFoundException($"File not found: {filePath}");
 
