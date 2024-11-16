@@ -13,5 +13,7 @@ DISABLE:
   - MARKDOWN
   - REPOSITORY
   - SPELL
+DISABLE_LINTERS:
+  - CSHARP_DOTNET_FORMAT
 FILEIO_REPORTER: false
 # DISABLE_ERRORS: true # Uncomment if you want MegaLinter to detect errors but not block CI to pass
