@@ -2,10 +2,10 @@ using System.Text.RegularExpressions;
 
 namespace AdventOfCode2023.Day01;
 
-public class SnowCalibration(int part)
+public partial class SnowCalibration(int part)
 {
-    private static readonly Regex MyRegex = new(@"\d", RegexOptions.Compiled);
-    
+    private static readonly Regex MyRegex = MyRegex1();
+
     private static readonly Dictionary<string, string> SpelledOutDigits =
         new()
         {
@@ -104,4 +104,6 @@ public class SnowCalibration(int part)
         File.Exists(filePath)
             ? File.ReadAllLines(filePath).ToList()
             : throw new FileNotFoundException($"File not found: {filePath}");
+    [GeneratedRegex(@"\d", RegexOptions.Compiled)]
+    private static partial Regex MyRegex1();
 }
