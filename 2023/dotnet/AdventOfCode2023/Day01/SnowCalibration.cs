@@ -2,8 +2,10 @@ using System.Text.RegularExpressions;
 
 namespace AdventOfCode2023.Day01;
 
-public partial class SnowCalibration(int part)
+public class SnowCalibration(int part)
 {
+    private static readonly Regex MyRegex = new(@"\d", RegexOptions.Compiled);
+    
     private static readonly Dictionary<string, string> SpelledOutDigits =
         new()
         {
@@ -31,18 +33,16 @@ public partial class SnowCalibration(int part)
     {
         return part switch
         {
-            1 => MyRegex().Match(line).Value, // Find the first numeric digit for part 1
+            1 => MyRegex.Match(line).Value, // Find the first numeric digit for part 1
             _ => FindDigitWithLowestIndex(line),
         };
     }
 
     private string FindLastDigit(string line)
     {
-        return part switch
-        {
-            1 => MyRegex().Match(new string(line.Reverse().ToArray())).Value, // Find the last numeric digit for part 1
-            _ => FindDigitWithHighestIndex(line),
-        };
+        return part == 1
+            ? MyRegex.Match(new string(line.Reverse().ToArray())).Value
+            : FindDigitWithHighestIndex(line);
     }
 
     private static string FindDigitWithLowestIndex(string line)
@@ -51,7 +51,7 @@ public partial class SnowCalibration(int part)
         string firstDigit = string.Empty;
 
         // Check numeric digits and update the lowest index
-        foreach (Match match in MyRegex().Matches(line))
+        foreach (Match match in MyRegex.Matches(line))
         {
             if (match.Index < lowestIndex)
             {
@@ -79,7 +79,7 @@ public partial class SnowCalibration(int part)
         var (highestIndex, lastDigit) = (-1, string.Empty);
 
         // Check numeric digits and update the highest index
-        foreach (Match match in MyRegex().Matches(line))
+        foreach (Match match in MyRegex.Matches(line))
         {
             (highestIndex, lastDigit) = (
                 match.Index > highestIndex ? match.Index : highestIndex,
@@ -106,7 +106,4 @@ public partial class SnowCalibration(int part)
         File.Exists(filePath)
             ? File.ReadAllLines(filePath).ToList()
             : throw new FileNotFoundException($"File not found: {filePath}");
-
-    [GeneratedRegex(@"\d")]
-    private static partial Regex MyRegex();
 }
