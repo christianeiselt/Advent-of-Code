@@ -104,6 +104,7 @@ public partial class SnowCalibration(int part)
         File.Exists(filePath)
             ? File.ReadAllLines(filePath).ToList()
             : throw new FileNotFoundException($"File not found: {filePath}");
+
     [GeneratedRegex(@"\d", RegexOptions.Compiled)]
     private static partial Regex MyRegex1();
 }
