@@ -102,7 +102,7 @@ public partial class SnowCalibration(int part)
 
     public int CalculateTotalCalibration(List<string> lines) => lines.Sum(ExtractCalibrationValue);
 
-    public static List<string> ReadLinesFromFile(string filePath) =>
+    public List<string> ReadLinesFromFile(string filePath) =>
         File.Exists(filePath)
             ? File.ReadAllLines(filePath).ToList()
             : throw new FileNotFoundException($"File not found: {filePath}");
