@@ -2,10 +2,10 @@ using System.Text.RegularExpressions;
 
 namespace AdventOfCode2023.Day01;
 
-public partial class SnowCalibration(int part)
+public class SnowCalibration(int part)
 {
-    private static readonly Regex MyRegex = MyRegex1();
-
+    private static readonly Regex MyRegex = new(@"\d", RegexOptions.Compiled);
+    
     private static readonly Dictionary<string, string> SpelledOutDigits =
         new()
         {
@@ -44,12 +44,11 @@ public partial class SnowCalibration(int part)
     private static string FindDigitWithLowestIndex(string line)
     {
         var lowestIndex = int.MaxValue;
-        string firstDigit = string.Empty;
+        var firstDigit = string.Empty;
 
         foreach (Match match in MyRegex.Matches(line))
         {
-            if (match.Index >= lowestIndex)
-                continue;
+            if (match.Index >= lowestIndex) continue;
             lowestIndex = match.Index;
             firstDigit = match.Value;
         }
@@ -57,8 +56,7 @@ public partial class SnowCalibration(int part)
         foreach (var (word, digit) in SpelledOutDigits)
         {
             var index = line.IndexOf(word, StringComparison.Ordinal);
-            if (index < 0 || index >= lowestIndex)
-                continue;
+            if (index < 0 || index >= lowestIndex) continue;
             lowestIndex = index;
             firstDigit = digit;
         }
@@ -81,8 +79,7 @@ public partial class SnowCalibration(int part)
         foreach (var (word, digit) in SpelledOutDigits)
         {
             var index = line.LastIndexOf(word, StringComparison.Ordinal);
-            if (index < 0 || index <= highestIndex)
-                continue;
+            if (index < 0 || index <= highestIndex) continue;
             (highestIndex, lastDigit) = (index, digit);
         }
 
@@ -95,7 +92,4 @@ public partial class SnowCalibration(int part)
         File.Exists(filePath)
             ? File.ReadAllLines(filePath).ToList()
             : throw new FileNotFoundException($"File not found: {filePath}");
-
-    [GeneratedRegex(@"\d", RegexOptions.Compiled)]
-    private static partial Regex MyRegex1();
 }

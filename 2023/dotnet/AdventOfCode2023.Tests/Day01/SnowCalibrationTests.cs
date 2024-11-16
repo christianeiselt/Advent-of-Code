@@ -65,7 +65,7 @@ public class SnowCalibrationTests
             );
         }
 
-        var lines = calibration.ReadLinesFromFile(TestFilePathExampleA);
+        var lines = SnowCalibration.ReadLinesFromFile(TestFilePathExampleA);
 
         var totalCalibration = calibration.CalculateTotalCalibration(lines);
 
@@ -86,7 +86,7 @@ public class SnowCalibrationTests
             );
         }
 
-        List<string> lines = calibration.ReadLinesFromFile(TestFilePath);
+        List<string> lines = SnowCalibration.ReadLinesFromFile(TestFilePath);
 
         int totalCalibration = calibration.CalculateTotalCalibration(lines);
 
@@ -107,7 +107,7 @@ public class SnowCalibrationTests
             );
         }
 
-        var lines = calibration.ReadLinesFromFile(TestFilePathExampleB);
+        var lines = SnowCalibration.ReadLinesFromFile(TestFilePathExampleB);
 
         var totalCalibration = calibration.CalculateTotalCalibration(lines);
 
@@ -128,7 +128,7 @@ public class SnowCalibrationTests
             );
         }
 
-        var lines = calibration.ReadLinesFromFile(TestFilePath);
+        var lines = SnowCalibration.ReadLinesFromFile(TestFilePath);
 
         var totalCalibration = calibration.CalculateTotalCalibration(lines);
 
