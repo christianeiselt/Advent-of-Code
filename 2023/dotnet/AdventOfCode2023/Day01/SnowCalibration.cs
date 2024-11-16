@@ -31,11 +31,7 @@ public class SnowCalibration(int part)
 
     private string FindFirstDigit(string line)
     {
-        return part switch
-        {
-            1 => MyRegex.Match(line).Value, // Find the first numeric digit for part 1
-            _ => FindDigitWithLowestIndex(line),
-        };
+        return part == 1 ? MyRegex.Match(line).Value : FindDigitWithLowestIndex(line);
     }
 
     private string FindLastDigit(string line)
@@ -50,25 +46,19 @@ public class SnowCalibration(int part)
         var lowestIndex = int.MaxValue;
         string firstDigit = string.Empty;
 
-        // Check numeric digits and update the lowest index
         foreach (Match match in MyRegex.Matches(line))
         {
-            if (match.Index < lowestIndex)
-            {
-                lowestIndex = match.Index;
-                firstDigit = match.Value;
-            }
+            if (match.Index >= lowestIndex) continue;
+            lowestIndex = match.Index;
+            firstDigit = match.Value;
         }
 
-        // Check spelled-out digits and update the lowest index
         foreach (var (word, digit) in SpelledOutDigits)
         {
             var index = line.IndexOf(word, StringComparison.Ordinal);
-            if (index >= 0 && index < lowestIndex)
-            {
-                lowestIndex = index;
-                firstDigit = digit;
-            }
+            if (index < 0 || index >= lowestIndex) continue;
+            lowestIndex = index;
+            firstDigit = digit;
         }
 
         return firstDigit;
@@ -78,7 +68,6 @@ public class SnowCalibration(int part)
     {
         var (highestIndex, lastDigit) = (-1, string.Empty);
 
-        // Check numeric digits and update the highest index
         foreach (Match match in MyRegex.Matches(line))
         {
             (highestIndex, lastDigit) = (
@@ -87,14 +76,11 @@ public class SnowCalibration(int part)
             );
         }
 
-        // Check spelled-out digits and update the highest index
         foreach (var (word, digit) in SpelledOutDigits)
         {
             var index = line.LastIndexOf(word, StringComparison.Ordinal);
-            if (index >= 0 && index > highestIndex)
-            {
-                (highestIndex, lastDigit) = (index, digit);
-            }
+            if (index < 0 || index <= highestIndex) continue;
+            (highestIndex, lastDigit) = (index, digit);
         }
 
         return lastDigit;
