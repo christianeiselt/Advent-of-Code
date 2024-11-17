@@ -5,7 +5,9 @@ namespace AdventOfCode2023.Tests;
 public class SnowCalibrationTests
 {
     private const string TestFilePath = "../../../../../aoc_input/day01.txt";
+
     private const string TestFilePathExampleA = "../../../../../aoc_input/day01ExA.txt";
+
     private const string TestFilePathExampleB = "../../../../../aoc_input/day01ExB.txt";
 
     [Fact]
