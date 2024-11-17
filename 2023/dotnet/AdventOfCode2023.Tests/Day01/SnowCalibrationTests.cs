@@ -1,6 +1,6 @@
 using AdventOfCode2023.Day01;
 
-namespace AdventOfCode2023Tests;
+namespace AdventOfCode2023.Tests;
 
 public class SnowCalibrationTests
 {
