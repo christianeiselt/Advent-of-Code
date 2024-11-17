@@ -5,7 +5,7 @@ namespace AdventOfCode2023.Day01;
 public class SnowCalibration(int part)
 {
     private static readonly Regex MyRegex = new(@"\d", RegexOptions.Compiled);
-    
+
     private static readonly Dictionary<string, string> SpelledOutDigits =
         new()
         {
