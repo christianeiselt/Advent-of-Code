@@ -1,3 +1,3 @@
-# NN [title] 
+# NN [title]
 
 A description of this package.

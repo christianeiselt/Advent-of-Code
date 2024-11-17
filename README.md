@@ -15,7 +15,7 @@ Contains solutions to the puzzles for the years:
 # Run the solutions
 Change into directory that contains the solution to run.
 
-## C#
+## C-Sharp
 `dotnet test solution.sln`
 
 ## Java
