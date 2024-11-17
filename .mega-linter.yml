@@ -12,27 +12,27 @@ APPLY_FIXES: all
 
 # If you use ENABLE_LINTERS variable, all other linters will be disabled by
 # default
-ENABLE_LINTERS:
-  - CSHARP_CSHARPIER
-  # - CSHARP_DOTNET_FORMAT
-  # - CSHARP_ROSLYNATOR
+# ENABLE_LINTERS:
+#   - CSHARP_CSHARPIER
+#   - CSHARP_ROSLYNATOR
 
 # DISABLE:
-  # - COPYPASTE # Uncomment to disable checks of excessive copy-pastes
-  # - SPELL # Uncomment to disable checks of spelling mistakes
-  # - JAVA
-  # - JAVASCRIPT
-  # - TYPESCRIPT
-  # - ACTION
-  # - MARKDOWN
-  # - REPOSITORY
+# - COPYPASTE # Uncomment to disable checks of excessive copy-pastes
+# - SPELL # Uncomment to disable checks of spelling mistakes
+# - JAVA
+# - JAVASCRIPT
+# - TYPESCRIPT
+# - ACTION
+# - MARKDOWN
+# - REPOSITORY
 
-# DISABLE_LINTERS:
-#   - CSHARP_DOTNET_FORMAT
+DISABLE_LINTERS:
+  - CSHARP_CSHARPIER
+  - CSHARP_DOTNET_FORMAT
+  - CSHARP_ROSLYNATOR
 
 SHOW_ELAPSED_TIME: true
 
 FILEIO_REPORTER: false
-
 # Uncomment if you want MegaLinter to detect errors but not block CI to pass
 # DISABLE_ERRORS: true
