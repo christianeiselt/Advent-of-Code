@@ -17,7 +17,7 @@ APPLY_FIXES: all
 #   - CSHARP_ROSLYNATOR
 
 DISABLE:
-- COPYPASTE # Uncomment to disable checks of excessive copy-pastes
+  - COPYPASTE # Uncomment to disable checks of excessive copy-pastes
 # - SPELL # Uncomment to disable checks of spelling mistakes
 # - JAVA
 # - JAVASCRIPT
