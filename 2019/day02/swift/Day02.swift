@@ -39,7 +39,7 @@ import Foundation
 do {
     let filePath = "2019/Day02/input.txt"
     let input = try String(contentsOfFile: filePath, encoding: .utf8)
-    
+
     var program = input.split(separator: ",").compactMap { Int($0) }
 
     program[1] = 12
