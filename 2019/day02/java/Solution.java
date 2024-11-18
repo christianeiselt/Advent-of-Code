@@ -1,61 +1,72 @@
-import java.io.File;
-import java.io.IOException;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.nio.charset.Charset;
-import java.sql.Array;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-
-package Solution;
+import java.io.*;
+import java.util.*;
 
 public class Solution {
 
-	private static final String INPUT_TXT = "input.txt";
+    private static final String INPUT_TXT = "input.txt";
 
-    public static ArrayList <String> getContent(final String path) {
-
-        BufferedReader reader = null;
-        final ArrayList<String> lines = new ArrayList<String>();
-
-        try {
-            String sCurrentLine;
-            reader = new BufferedReader(new FileReader(path));
-            while ((sCurrentLine = reader.readLine()) != null) {
-                lines.add(sCurrentLine);
+    public static List<Integer> getContent(final String path) {
+        List<Integer> program = new ArrayList<>();
+        try (BufferedReader reader = new BufferedReader(new FileReader(path))) {
+            String line = reader.readLine();
+            if (line != null) {
+                String[] parts = line.split(",");
+                for (String part : parts) {
+                    program.add(Integer.parseInt(part));
+                }
             }
-        } catch (final IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
-            System.out.print(e.getMessage());
-        } finally {
-            try {
-                if (reader != null)
-                    reader.close();
-            } catch (final IOException ex) {
-                System.out.println(ex.getMessage());
-                ex.printStackTrace();
-            }
         }
-
-        return lines;
-	}
-
-	public static void solve(final String path) {
-
-        final ArrayList<String> programsInput = getContent(path);
-        //System.out.println(programsInput.get(0).getClass().getName());
-        String programs = programsInput.get(0);
-        String[] programCodes = programs.split(",");
-
-        for (int i = 0; i<programCodes.length; i++) {
-            //System.out.println(programCodes[i]);
-        }
-        //System.out.println("The resulting frequency is: " + sum);
-
+        return program;
     }
 
-    public static void main(final String[] args) throws IOException {
-		solve(INPUT_TXT);
+    public static int runProgram(List<Integer> program) {
+        int i = 0;
+        while (program.get(i) != 99) {
+            int opcode = program.get(i);
+            int pos1 = program.get(i + 1);
+            int pos2 = program.get(i + 2);
+            int pos3 = program.get(i + 3);
+            if (opcode == 1) {
+                program.set(pos3, program.get(pos1) + program.get(pos2));
+            } else if (opcode == 2) {
+                program.set(pos3, program.get(pos1) * program.get(pos2));
+            }
+            i += 4;
+        }
+        return program.get(0);
+    }
+
+    public static int partOne(List<Integer> program) {
+        List<Integer> programCopy = new ArrayList<>(program);
+        programCopy.set(1, 12);
+        programCopy.set(2, 2);
+        return runProgram(programCopy);
+    }
+
+    public static int partTwo(List<Integer> program) {
+        for (int noun = 0; noun <= 99; noun++) {
+            for (int verb = 0; verb <= 99; verb++) {
+                List<Integer> programCopy = new ArrayList<>(program);
+                programCopy.set(1, noun);
+                programCopy.set(2, verb);
+                int result = runProgram(programCopy);
+                if (result == 19690720) {
+                    return 100 * noun + verb;
+                }
+            }
+        }
+        return -1;
+    }
+
+    public static void main(String[] args) {
+        List<Integer> program = getContent(INPUT_TXT);
+
+        int resultPartOne = partOne(program);
+        System.out.println("Part 1: " + resultPartOne);
+
+        int resultPartTwo = partTwo(program);
+        System.out.println("Part 2: " + resultPartTwo);
     }
 }
