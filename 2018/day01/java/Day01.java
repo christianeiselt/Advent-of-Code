@@ -10,6 +10,10 @@ public class Day01 {
 
     private static final String INPUT_TXT = "input.txt";
 
+    private Day01() {
+        throw new UnsupportedOperationException("Utility class should not be instantiated.");
+    }
+
     public static ArrayList<String> getContent(final String path) {
         BufferedReader reader = null;
         final ArrayList<String> lines = new ArrayList<>();
@@ -25,7 +29,9 @@ public class Day01 {
             System.out.println(e.getMessage());
         } finally {
             try {
-                if (reader != null) reader.close();
+                if (reader != null) {
+                    reader.close();
+                }
             } catch (final IOException ex) {
                 System.out.println(ex.getMessage());
                 ex.printStackTrace();
@@ -48,7 +54,6 @@ public class Day01 {
         for (String change : changes) {
             int number = Integer.parseInt(change);
             resultingFrequency += number;
-
             frequencies.add(resultingFrequency);
         }
 
