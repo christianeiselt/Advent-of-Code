@@ -33,11 +33,12 @@ function containsDoubleDigit (number) {
   const numArr = splitInDigits(number)
   let currentNum = 0
   let countCurrentNum = 0
+  let foundDouble = false
 
   for (let i = 0; i < numArr.length; i++) {
-    if (numArr[i] != currentNum) {
+    if (numArr[i] !== currentNum) {
       if (countCurrentNum === 2) {
-        return true
+        foundDouble = true
       }
       currentNum = numArr[i]
       countCurrentNum = 1
@@ -46,23 +47,23 @@ function containsDoubleDigit (number) {
     }
   }
 
-  if (countCurrentNum % 2 === 0) {
-    return true
-  } else {
-    return false
+  // Last check for a pair of exactly two digits
+  if (countCurrentNum === 2) {
+    foundDouble = true
   }
+
+  return foundDouble
 }
 
-function countCandidates (range, part) {
-  const passwords = []
-  const passwords2 = []
+function countCandidates (input, part) {
+  const candidates = []
 
-  for (i = start; i <= end; i++) {
-    if (rising(i) === true) {
-      if (part === 1 && containsMultiDigit(i) === true) {
+  for (let i = input.min; i <= input.max; i++) {
+    if (rising(i)) {
+      if (part === 1 && containsMultiDigit(i)) {
         candidates.push(i)
       }
-      if (part === 2 && containsDoubleDigit(i) === true) {
+      if (part === 2 && containsDoubleDigit(i)) {
         candidates.push(i)
       }
     }
@@ -71,14 +72,12 @@ function countCandidates (range, part) {
   console.log(candidates.length)
 }
 
+// Tests
 console.log(containsDoubleDigit(111111) === true)
+console.log(containsDoubleDigit(122234) === false)
+console.log(containsDoubleDigit(112223) === true)
+console.log(containsDoubleDigit(111222) === false)
 
-solveA()
-
-countCandidates(input, 1)
-countCandidates(input, 2)
-// countCandidates([111111,111112]);
-// console.log(containsMultiDigit(122234));
-// console.log(false == containsDoubleDigit(122234));
-// console.log(true == containsDoubleDigit(112223));
-// console.log(false == containsDoubleDigit(111222));
+// Solve Part 1 and Part 2
+countCandidates(input, 1) // Solve part 1
+countCandidates(input, 2) // Solve part 2
