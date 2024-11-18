@@ -1,70 +1,43 @@
 // https://adventofcode.com/2018/day/1
+export {}
 
-const rawInput = await Deno.readTextFile("./input.txt");
-const input: number[] = rawInput.split("\n").map(Number);
+const rawInput = await Deno.readTextFile('./input.txt')
+const input: number[] = rawInput.split('\n').map(Number).filter((n) => !isNaN(n)) // Filter out non-numeric values
 
 class Day01 {
-  private changes: number[];
+  private readonly changes: number[]
 
-  constructor(input: number[]) {
-    this.changes = input;
+  constructor (input: number[]) {
+    this.changes = input
   }
 
-  PartOne() {
-    let resultingFrequency = 0;
-
-    for (let i = 0; i < this.changes.length; i += 1) {
-      const change = this.changes[i];
-
-      if (Number.isNaN(change) || change == undefined) {
-        console.log("is not a number or is undefined");
-      } else {
-        resultingFrequency += change;
-      }
-    }
-
-    console.log(
-      `The resulting frequency after 1 loop is: ${resultingFrequency}.`,
-    );
+  PartOne (): void {
+    const resultingFrequency = this.changes.reduce((acc, change) => acc + change, 0)
+    console.log(`The resulting frequency after 1 loop is: ${resultingFrequency}.`)
   }
 
-  PartTwo() {
-    let resultingFrequency = 0;
-    const frequencies: { [change: number]: number } = {};
-    let duplicateFrequency = 0;
-    let duplicate = false;
+  PartTwo (): void {
+    let resultingFrequency = 0
+    const seenFrequencies = new Set<number>()
+    let duplicateFrequency: number | null = null
+    let i = 0
 
-    while (!duplicate) {
-      for (let i = 0; i < this.changes.length; i++) {
-        const change = this.changes[i];
+    while (duplicateFrequency === null) {
+      const change = this.changes[i % this.changes.length] // Loop through changes cyclically
+      resultingFrequency += change
 
-        if (Number.isNaN(change) || change == undefined) {
-          console.log("is not a number or is undefined");
-        } else {
-          resultingFrequency += change;
-        }
-
-        const isNotExistingFrequency = !Object.prototype.hasOwnProperty.call(
-          frequencies,
-          resultingFrequency,
-        );
-
-        if (isNotExistingFrequency) {
-          frequencies[resultingFrequency] = resultingFrequency;
-        } else if (!duplicate) {
-          duplicate = true;
-          duplicateFrequency = resultingFrequency;
-          console.log(
-            `The first frequency reached twice is: ${duplicateFrequency}.`,
-          );
-        } else {
-          // already known duplicate
-        }
+      if (seenFrequencies.has(resultingFrequency)) {
+        duplicateFrequency = resultingFrequency
+        console.log(`The first frequency reached twice is: ${duplicateFrequency}.`)
+        break
       }
+
+      seenFrequencies.add(resultingFrequency)
+      i++
     }
   }
 }
 
-const solution = new Day01(input);
-solution.PartOne();
-solution.PartTwo();
+const solution = new Day01(input)
+solution.PartOne()
+solution.PartTwo()
