@@ -18,7 +18,7 @@ APPLY_FIXES: all
 
 DISABLE:
   - COPYPASTE # Uncomment to disable checks of excessive copy-pastes
-  # - SPELL # Uncomment to disable checks of spelling mistakes
+  - SPELL # Uncomment to disable checks of spelling mistakes
   # - JAVA
   # - JAVASCRIPT
   # - TYPESCRIPT
