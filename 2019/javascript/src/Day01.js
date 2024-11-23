@@ -3,7 +3,7 @@
 // Convert input.txt in array
 // @ts-ignore: ignore ts rules
 const fs = require('fs')
-const text = fs.readFileSync('../input.txt', 'utf8')
+const text = fs.readFileSync('2019/aoc_input/day01.txt', 'utf8')
 const splitLines = (/** @type {string} */ str) => str.split(/\r?\n/)
 const massPerModule = splitLines(text)
 
@@ -47,7 +47,7 @@ function calcFuelForLaunch () {
 
   for (let i = 0; i < massPerModule.length; i++) {
     // @ts-ignore: ignore ts rules
-    const mass = parseInt(massPerModule[i])
+    const mass = parseInt(massPerModule[i], 10)
 
     if (!isNaN(mass)) {
       // @ts-ignore: ignore ts rules
