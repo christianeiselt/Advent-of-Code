@@ -1,5 +1,5 @@
 # Advent-of-Code
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/46ac6280fbca4de38faa568d5f9b7599)](https://www.codacy.com/gh/christianeiselt/Advent-of-Code/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=christianeiselt/Advent-of-Code&amp;utm_campaign=Badge_Grade)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/46ac6280fbca4de38faa568d5f9b7599)](https://app.codacy.com/gh/christianeiselt/Advent-of-Code/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
 
 Contains solutions to the puzzles for the years:  
 [2015](https://adventofcode.com/2015/)  
@@ -12,23 +12,23 @@ Contains solutions to the puzzles for the years:
 [2022](https://adventofcode.com/2022/)  
 [2023](https://adventofcode.com/2023/)
 
-# Run the solutions
+## Run the solutions
 Change into directory that contains the solution to run.
 
-## C#
+### C-Sharp
 `dotnet test solution.sln`
 
-## Java
+### Java
 `java Solution.java`
 
-## JavaScript
+### JavaScript
 `node solution.js`
 
-## Perl
+### Perl
 `perl solution.pl`
 
-## Swift
+### Swift
 `swift solution.swift`
 
-## TypeScript
+### TypeScript
 `deno run --allow-read solution.ts`

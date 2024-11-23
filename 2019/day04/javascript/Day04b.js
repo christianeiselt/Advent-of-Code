@@ -29,7 +29,7 @@ function check (pw, triplesNotAllowed) {
       if (triplesNotAllowed) {
         if (i === 1) {
           doubleFound = pwArray[i - 1] === pwArray[i] && pwArray[i] !== pwArray[i + 1]
-        } else if (i == pwArray.length - 1) {
+        } else if (i === pwArray.length - 1) {
           doubleFound = pwArray[i - 1] === pwArray[i] && pwArray[i] !== pwArray[i - 2]
         } else {
           doubleFound = pwArray[i - 1] === pwArray[i] && pwArray[i] !== pwArray[i - 2] && pwArray[i] !== pwArray[i + 1]
