@@ -8,8 +8,8 @@
  */
 
 // Constants for file path and initial frequency
-export const INPUT_TXT: string = '2018/aoc_input/day01.txt'
-const INITIAL_FREQUENCY: number = 0
+export const INPUT_TXT = '2018/aoc_input/day01.txt'
+const INITIAL_FREQUENCY = 0
 
 /**
  * Processes frequency changes from a file and calculates:
@@ -19,12 +19,12 @@ const INITIAL_FREQUENCY: number = 0
  *
  * @param path The file path containing frequency changes as lines of integers.
  */
-export async function solve (path: string): Promise<void> {
+export const solve = async (path: string): Promise<void> => {
   const changes = await getContent(path)
 
   let resultFreq: number = INITIAL_FREQUENCY // Use the constant for initial frequency
-  let dupFreq: number = 0 // Variable for the first duplicate frequency
-  let duplicateFound: boolean = false // Explicitly typing as boolean
+  let dupFreq = 0 // Variable for the first duplicate frequency
+  let duplicateFound = false // Explicitly typing as boolean
 
   const frequencies = new Set<number>()
   frequencies.add(resultFreq)
@@ -61,7 +61,7 @@ export async function solve (path: string): Promise<void> {
  * @param path The file path to read from.
  * @returns A list of strings, each representing a line from the file.
  */
-async function getContent (path: string): Promise<string[]> {
+const getContent = async (path: string): Promise<string[]> => {
   try {
     const rawData = await Deno.readTextFile(path)
     return rawData.split('\n').map(line => line.trim()).filter(line => line !== '')
