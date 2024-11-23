@@ -8,23 +8,9 @@
  */
 export class Day01 {
   // Make the constant public so that it can be accessed from outside
-  public static readonly INPUT_TXT = 'aoc_input/day01.txt';
-
-  /**
-   * Reads the content of a file line by line into an array of strings.
-   *
-   * @param path The file path to read from.
-   * @returns A list of strings, each representing a line from the file.
-   */
-  private static async getContent(path: string): Promise<string[]> {
-    try {
-      const rawData = await Deno.readTextFile(path);
-      return rawData.split('\n').map(line => line.trim()).filter(line => line !== '');
-    } catch (error) {
-      console.error(`Error reading file: ${error}`);
-      throw error;
-    }
-  }
+  public static readonly INPUT_TXT: string = 'aoc_input/day01.txt';
+  // Konstante für die Startfrequenz
+  private static readonly INITIAL_FREQUENCY: number = 0;
 
   /**
    * Processes frequency changes from a file and calculates:
@@ -37,7 +23,7 @@ export class Day01 {
   public static async solve(path: string): Promise<void> {
     const changes = await this.getContent(path);
 
-    let resultFreq = 0; // Variable for the resulting frequency
+    let resultFreq = Day01.INITIAL_FREQUENCY; // Use the constant for initial frequency
     let dupFreq = 0;    // Variable for the first duplicate frequency
     let duplicateFound = false;
 
@@ -52,7 +38,7 @@ export class Day01 {
     console.log(`The resulting frequency is: ${resultFreq}`);
 
     // Find the first frequency reached twice
-    resultFreq = 0; // Reset the frequency for repeated application
+    resultFreq = Day01.INITIAL_FREQUENCY; // Reset the frequency for repeated application
     while (!duplicateFound) {
       for (const change of changes) {
         const number = parseInt(change, 10);
@@ -68,6 +54,22 @@ export class Day01 {
     }
 
     console.log(`The first frequency reached twice is: ${dupFreq}`);
+  }
+
+  /**
+   * Reads the content of a file line by line into an array of strings.
+   *
+   * @param path The file path to read from.
+   * @returns A list of strings, each representing a line from the file.
+   */
+  private static async getContent(path: string): Promise<string[]> {
+    try {
+      const rawData = await Deno.readTextFile(path);
+      return rawData.split('\n').map(line => line.trim()).filter(line => line !== '');
+    } catch (error) {
+      console.error(`Error reading file: ${error}`);
+      throw error;
+    }
   }
 }
 
