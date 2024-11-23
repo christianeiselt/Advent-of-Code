@@ -27,8 +27,6 @@ public final class Day02 {
     private static final int RESULT_MULTIPLIER = 100;
     /** The number of values to process per opcode (in this case, 4). */
     private static final int OPCODE_LENGTH = 4;
-    /** The number of positions to be read from the program per operation. */
-    private static final int READ_POSITIONS = 3;
     /** The index of the third position to be used in the program operation. */
     private static final int THIRD_POSITION = 3;
 
