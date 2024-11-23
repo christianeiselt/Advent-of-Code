@@ -21,7 +21,7 @@ public final class Day01 {
      * Path to the input file containing frequency changes.
      */
     private static final String INPUT_TXT =
-        "aoc_input/day01.txt";
+        "2018/aoc_input/day01.txt";
 
     /**
      * Private constructor to prevent instantiation of the utility class.

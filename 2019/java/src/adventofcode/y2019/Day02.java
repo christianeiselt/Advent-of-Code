@@ -13,7 +13,6 @@ public final class Day02 {
 
     private static final int HALT_OPCODE = 99;
     private static final int ADD_OPCODE = 1;
-    private static final int MULTIPLY_OPCODE = 2;
     private static final int INITIAL_NOUN = 12;
     private static final int INITIAL_VERB = 2;
     private static final int TARGET_OUTPUT = 19_690_720;
@@ -96,7 +95,7 @@ public final class Day02 {
      * @param args the command-line arguments
      */
     public static void main(String[] args) {
-        List<Integer> program = getContent("aoc_input/day02.txt");
+        List<Integer> program = getContent("2019/aoc_input/day02.txt");
 
         System.out.println("Part 1: " + partOne(new ArrayList<>(program)));
         System.out.println("Part 2: " + partTwo(program));
