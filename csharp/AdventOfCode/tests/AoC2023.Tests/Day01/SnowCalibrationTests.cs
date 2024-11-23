@@ -1,14 +1,15 @@
-using AdventOfCode2023.Day01;
+using AoC2023.Day01;
+using AoCShared;
 
-namespace AdventOfCode2023.Tests;
+namespace AoC2023.Tests.Day01;
 
 public class SnowCalibrationTests
 {
-    private const string TestFilePath = "../../../../../aoc_input/day01.txt";
+    private static readonly string TestFilePath = InputHelper.GetInput(2023, 1);
 
-    private const string TestFilePathExampleA = "../../../../../aoc_input/day01ExA.txt";
+    private static readonly string TestFilePathExampleA = InputHelper.GetExample(2023, 1, "ExA");
 
-    private const string TestFilePathExampleB = "../../../../../aoc_input/day01ExB.txt";
+    private static readonly string TestFilePathExampleB = InputHelper.GetExample(2023, 1, "ExB");
 
     [Fact]
     public void Test_ExtractCalibrationValuePartOne_ValidInput()

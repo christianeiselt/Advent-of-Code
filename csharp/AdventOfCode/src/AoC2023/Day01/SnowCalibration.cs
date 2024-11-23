@@ -1,6 +1,6 @@
 using System.Text.RegularExpressions;
 
-namespace AdventOfCode2023.Day01;
+namespace AoC2023.Day01;
 
 public class SnowCalibration(int part)
 {
