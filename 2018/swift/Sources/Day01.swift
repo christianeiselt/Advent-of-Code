@@ -6,7 +6,7 @@ func partOne(changes: String) {
     // Split input by lines and safely convert to integers
     let resultingFrequency = changes.split(separator: "\n")
         .compactMap { Int($0.trimmingCharacters(in: .whitespacesAndNewlines)) }
-    
+
     // Calculate the sum of the frequencies and print the result
     let sum = resultingFrequency.reduce(0, +)
     print("The resulting frequency after 1 loop is: \(sum).")
