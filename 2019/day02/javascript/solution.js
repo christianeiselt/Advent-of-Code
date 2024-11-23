@@ -2,18 +2,16 @@
 const fs = require('fs')
 
 // Convert input.txt in array
-// @ts-ignore: ignore ts rules
 function inputToArray (input) {
-  console.log(input)
   const inputArr = fs.readFileSync(input).toString().split('\n')
-  if (inputArr[inputArr.length - 1] == '') {
-    inputArr.pop()
+  if (inputArr[inputArr.length - 1] === '') {
+    inputArr.pop() // Remove last empty string (if file ends with a newline)
   }
   const outputArr = inputArr[0].split(',').map(Number)
   return outputArr
 }
 
-// @ts-ignore: ignore ts rules
+// Run the program and execute opcodes
 function runProgram (program) {
   let num1, num2, result
   let num1Pos, num2Pos, resultPos
@@ -31,50 +29,58 @@ function runProgram (program) {
     } else if (program[i] === 2) {
       result = num1 * num2
     } else if (program[i] === 99) {
-      break
+      break // Halt when opcode 99 is encountered
     } else {
-      console.log('Error: opcode not found!')
+      console.log(`Error: Unknown opcode ${program[i]} at position ${i}`)
+      throw new Error('Unknown opcode encountered!')
     }
     program[resultPos] = result
   }
   return program
 }
 
-// @ts-ignore: ignore ts rules
+// Solve part A: set noun=12, verb=2, and run the program
 function solveA (inputPath) {
-  // push input in array
   const inputArr = inputToArray(inputPath)
 
-  // prepare program
+  // Modify input program (noun=12, verb=2)
   inputArr[1] = 12
   inputArr[2] = 2
-  console.log('Part One: ' + runProgram(inputArr)[0])
+
+  const result = runProgram(inputArr)
+  console.log('Part One: ' + result[0])
 }
 
-// @ts-ignore: ignore ts rules
+// Solve part B: Find the correct noun and verb for the output 19690720
 function solveB (inputPath) {
   const seek = 19690720
   let found = false
 
-  for (let verb = 0; verb < 100; verb++) {
-    for (let noun = 0; noun < 100; noun++) {
-      // push input in array
+  for (let noun = 0; noun < 100; noun++) {
+    for (let verb = 0; verb < 100; verb++) {
       const inputArr = inputToArray(inputPath)
 
-      // prepare program
+      // Modify input program (noun, verb)
       inputArr[1] = noun
       inputArr[2] = verb
 
       const program = runProgram(inputArr)
-      // console.log(program[0]);
+
       if (program[0] === seek) {
         found = true
-        console.log('Part Two: Number ' + seek + ' found (' + found + ') with verb ' + verb + ' and noun ' + noun + ' (Result: ' + (100 * noun + verb) + ').')
+        console.log(`Part Two: Number ${seek} found (Result: ${100 * noun + verb}) with noun ${noun} and verb ${verb}.`)
+        break // Stop once we found the solution
       }
     }
+    if (found) break // Exit outer loop if found
+  }
+
+  if (!found) {
+    console.log('Part Two: No solution found')
   }
 }
 
+// Run tests
 function runTests () {
   const tests = {
     TestA1: [
@@ -94,21 +100,26 @@ function runTests () {
       [30, 1, 1, 4, 2, 5, 6, 0, 99]
     ]
   }
+
   let succeed = true
 
   for (const key in tests) {
-    // @ts-ignore: ignore ts rules
     const result = runProgram(tests[key][0])
-    // @ts-ignore: ignore ts rules
-    const expResult = tests[key][1]
-    if (JSON.stringify(result) != JSON.stringify(expResult)) {
+    const expectedResult = tests[key][1]
+
+    if (JSON.stringify(result) !== JSON.stringify(expectedResult)) {
       succeed = false
+      console.log(`Test ${key} failed!`)
     }
   }
+
   return succeed
 }
 
-if (runTests() === true) {
+// Start solving
+if (runTests()) {
   solveA('../input.txt')
   solveB('../input.txt')
+} else {
+  console.log('Some tests failed!')
 }

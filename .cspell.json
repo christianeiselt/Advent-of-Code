@@ -13,6 +13,7 @@
   ],
   "language": "en",
   "noConfigSearch": true,
+  "version": "0.2",
   "words": [
     "Codacy",
     "Fody",
@@ -22,10 +23,12 @@
     "Nsight",
     "PTVS",
     "Paket",
+    "ROSLYNATOR",
     "Silverlight",
     "Telerik's",
     "ackages",
     "ackup",
+    "adventofcode",
     "appxbundle",
     "appxupload",
     "binlog",
@@ -82,6 +85,7 @@
     "uild",
     "userosscache",
     "userprefs",
+    "venv",
     "vshistory",
     "vspscc",
     "vspx",
@@ -91,6 +95,5 @@
     "xcodeproj",
     "xcuserdata",
     "xpress"
-  ],
-  "version": "0.2"
+  ]
 }

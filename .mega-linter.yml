@@ -4,7 +4,7 @@
 # linters documentation
 
 # all, none, or list of linter keys
-APPLY_FIXES: none
+APPLY_FIXES: all
 
 # If you use ENABLE variable, all other languages/formats/tooling-formats will
 # be disabled by default
@@ -13,10 +13,12 @@ APPLY_FIXES: none
 # If you use ENABLE_LINTERS variable, all other linters will be disabled by
 # default
 # ENABLE_LINTERS:
+#   - CSHARP_CSHARPIER
+#   - CSHARP_ROSLYNATOR
 
-# DISABLE:
-  # - COPYPASTE # Uncomment to disable checks of excessive copy-pastes
-  # - SPELL # Uncomment to disable checks of spelling mistakes
+DISABLE:
+  - COPYPASTE # Uncomment to disable checks of excessive copy-pastes
+  - SPELL # Uncomment to disable checks of spelling mistakes
   # - JAVA
   # - JAVASCRIPT
   # - TYPESCRIPT
@@ -24,12 +26,13 @@ APPLY_FIXES: none
   # - MARKDOWN
   # - REPOSITORY
 
-# DISABLE_LINTERS:
-#   - CSHARP_DOTNET_FORMAT
+DISABLE_LINTERS:
+  - CSHARP_CSHARPIER
+  - CSHARP_DOTNET_FORMAT
+  - CSHARP_ROSLYNATOR
 
 SHOW_ELAPSED_TIME: true
 
 FILEIO_REPORTER: false
-
 # Uncomment if you want MegaLinter to detect errors but not block CI to pass
 # DISABLE_ERRORS: true
