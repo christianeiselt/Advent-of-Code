@@ -1,3 +1,5 @@
+package adventofcode.y2019;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -136,7 +138,7 @@ public final class Day02 {
      */
     public static void main(final String[] args) {
         final List<Integer> program = getContent(
-            "../../../../aoc_input/day02.txt"
+            "aoc_input/day02.txt"
         );
 
         final int resultPartOne = partOne(program);
