@@ -1,125 +1,78 @@
 // Solution to https://adventofcode.com/2019/day/1
 
-// Convert input.txt in array
-// @ts-ignore: ignore ts rules
-const fs = require('fs')
-const text = fs.readFileSync('2019/aoc_input/day01.txt', 'utf8')
-const splitLines = (/** @type {string} */ str) => str.split(/\r?\n/)
-const massPerModule = splitLines(text)
+// Convert input.txt to an array of masses
+const fs = require('fs');
+const text = fs.readFileSync('2019/aoc_input/day01.txt', 'utf8');
+const splitLines = (str) => str.split(/\r?\n/);
+const massPerModule = splitLines(text);
 
 /**
-* @param {number} mass
-*/
-function calcFuelForModule (mass) {
-  return Math.floor(mass / 3) - 2
+ * Calculate the fuel required for a given mass.
+ * @param {number} mass - The mass to calculate fuel for.
+ * @param {boolean} includeFuelMass - Whether to include the additional fuel required for the fuel itself.
+ * @returns {number} - The total fuel required.
+ */
+function calcFuel(mass, includeFuelMass = false) {
+  // Calculate the initial fuel required for the mass
+  let totalFuel = Math.floor(mass / 3) - 2;
+
+  // If the fuel is less than or equal to 0, return 0 (no fuel needed)
+  if (totalFuel <= 0) return 0;
+
+  // If we're including the fuel mass, recursively calculate the additional fuel required
+  if (includeFuelMass) {
+    // Calculate additional fuel, and stop recursion if no more fuel is needed
+    const additionalFuel = calcFuel(totalFuel, true);
+    return totalFuel + additionalFuel; // Return total fuel and include the additional fuel
+  }
+
+  return totalFuel; // Return the total fuel needed for the module
 }
 
 /**
-* @param {number} mass
-*/
-function calcTotalFuelForModule (mass) {
-  let totalFuelForModule = calcFuelForModule(mass)
-  let addFuel = calcFuelForModule(totalFuelForModule)
-
-  while (addFuel > 0) {
-    totalFuelForModule += addFuel
-    addFuel = calcFuelForModule(addFuel)
-  }
-
-  return totalFuelForModule
-}
-
-function calcModFuel () {
-  let fuel = 0
+ * Calculate the total fuel for all modules based on the provided fuel calculation method.
+ * @param {boolean} includeFuelMass - Whether to include the additional fuel required for the fuel itself.
+ * @returns {number} - The total fuel for all modules.
+ */
+function calculateTotalFuel(includeFuelMass = false) {
+  let totalFuel = 0;
   for (let i = 0; i < massPerModule.length; i++) {
-    // @ts-ignore: ignore ts rules
-    const mass = parseInt(massPerModule[i], 10)
-
+    const mass = parseInt(massPerModule[i], 10);
     if (!isNaN(mass)) {
-      fuel += calcFuelForModule(mass)
+      totalFuel += calcFuel(mass, includeFuelMass);
     }
   }
-  return fuel
+  return totalFuel;
 }
 
-function calcFuelForLaunch () {
-  let fuel = 0
+// Function to run test cases and log results
+function runTestCases() {
+  const testCasesA = [
+    { mass: 12, expected: 2 },
+    { mass: 14, expected: 2 },
+    { mass: 1969, expected: 654 },
+    { mass: 100756, expected: 33583 }
+  ];
 
-  for (let i = 0; i < massPerModule.length; i++) {
-    // @ts-ignore: ignore ts rules
-    const mass = parseInt(massPerModule[i], 10)
+  const testCasesB = [
+    { mass: 12, expected: 2 },
+    { mass: 14, expected: 2 },
+    { mass: 1969, expected: 966 },
+    { mass: 100756, expected: 50346 }
+  ];
 
-    if (!isNaN(mass)) {
-      // @ts-ignore: ignore ts rules
-      fuel += calcTotalFuelForModule(massPerModule[i])
-    }
-  }
+  testCasesA.forEach(({ mass, expected }) => {
+    console.log(`Test A: ${calcFuel(mass) === expected} (${calcFuel(mass)})`);
+  });
 
-  return fuel
+  testCasesB.forEach(({ mass, expected }) => {
+    console.log(`Test B: ${calcFuel(mass, true) === expected} (${calcFuel(mass, true)})`);
+  });
 }
 
-console.log(
-  'Test A1: ' +
-    (calcFuelForModule(12) === 2) +
-    ' (' +
-    calcFuelForModule(12) +
-    ')'
-)
-console.log(
-  'Test A2: ' +
-    (calcFuelForModule(14) === 2) +
-    ' (' +
-    calcFuelForModule(14) +
-    ')'
-)
-console.log(
-  'Test A3: ' +
-    (calcFuelForModule(1969) === 654) +
-    ' (' +
-    calcFuelForModule(1969) +
-    ')'
-)
-console.log(
-  'Test A4: ' +
-    (calcFuelForModule(100756) === 33583) +
-    ' (' +
-    calcFuelForModule(100756) +
-    ')'
-)
+// Run the test cases
+runTestCases();
 
-console.log(
-  'Solution A: ' + calcModFuel() + ' units fuel needed for all modules'
-)
-
-console.log(
-  'Test B1: ' +
-    (calcTotalFuelForModule(12) === 2) +
-    ' (' +
-    calcTotalFuelForModule(12) +
-    ')'
-)
-console.log(
-  'Test B2: ' +
-    (calcTotalFuelForModule(14) === 2) +
-    ' (' +
-    calcTotalFuelForModule(14) +
-    ')'
-)
-console.log(
-  'Test B3: ' +
-    (calcTotalFuelForModule(1969) === 966) +
-    ' (' +
-    calcTotalFuelForModule(1969) +
-    ')'
-)
-console.log(
-  'Test B4: ' +
-    (calcTotalFuelForModule(100756) === 50346) +
-    ' (' +
-    calcTotalFuelForModule(100756) +
-    ')'
-)
-
-console.log(
-  'Solution B: ' + calcFuelForLaunch() + ' units fuel needed for launch'
-)
+// Output the solutions
+console.log('Solution A: ' + calculateTotalFuel() + ' units of fuel needed for all modules');
+console.log('Solution B: ' + calculateTotalFuel(true) + ' units of fuel needed for launch');
