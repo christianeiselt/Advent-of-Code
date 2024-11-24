@@ -1,4 +1,3 @@
-using AoC2023.Day01;
 using AoCShared;
 
 namespace AoC2023.Tests.Day01;
@@ -57,17 +56,17 @@ public class Day01Tests
     public void Test_CalculateTotalCalibrationPartOne_FromExampleFile()
     {
         var calibration = new AoC2023.Day01.Day01(1);
-        var ExampleFilePath = FileHelper.GetExampleFile(2023, 1, 1, "a");
-        if (!File.Exists(ExampleFilePath))
+        var exampleFilePath = FileHelper.GetExampleFile(2023, 1, 1, "a");
+        if (!File.Exists(exampleFilePath))
         {
             var currentDirectory = Directory.GetCurrentDirectory();
 
             throw new FileNotFoundException(
-                $"Test file not found: {ExampleFilePath}. Current directory: {currentDirectory}"
+                $"Test file not found: {exampleFilePath}. Current directory: {currentDirectory}"
             );
         }
 
-        var lines = AoC2023.Day01.Day01.ReadLinesFromFile(ExampleFilePath);
+        var lines = FileHelper.ReadLinesFromFile(exampleFilePath);
 
         var totalCalibration = calibration.CalculateTotalCalibration(lines);
         var expectedAnswer = GetAnswer(2023, 1, 1, "a"); // Get the answer for Part 1 Example A
@@ -79,17 +78,17 @@ public class Day01Tests
     public void Test_CalculateTotalCalibrationPartOne_FromInputFile()
     {
         var calibration = new AoC2023.Day01.Day01(1);
-        var InputFilePath = FileHelper.GetInputFile(2023, 1);
-        if (!File.Exists(InputFilePath))
+        var inputFilePath = FileHelper.GetInputFile(2023, 1);
+        if (!File.Exists(inputFilePath))
         {
             var currentDirectory = Directory.GetCurrentDirectory();
 
             throw new FileNotFoundException(
-                $"Test file not found: {InputFilePath}. Current directory: {currentDirectory}"
+                $"Test file not found: {inputFilePath}. Current directory: {currentDirectory}"
             );
         }
 
-        var lines = AoC2023.Day01.Day01.ReadLinesFromFile(InputFilePath);
+        var lines = FileHelper.ReadLinesFromFile(inputFilePath);
 
         var totalCalibration = calibration.CalculateTotalCalibration(lines);
         var expectedAnswer = GetAnswer(2023, 1, 1); // Get the answer for Part 1 from input file
@@ -101,17 +100,17 @@ public class Day01Tests
     public void Test_CalculateTotalCalibrationPartTwo_FromExampleFile()
     {
         var calibration = new AoC2023.Day01.Day01(2);
-        var ExampleFilePath = FileHelper.GetExampleFile(2023, 1, 2, "a");
-        if (!File.Exists(ExampleFilePath))
+        var exampleFilePath = FileHelper.GetExampleFile(2023, 1, 2, "a");
+        if (!File.Exists(exampleFilePath))
         {
             var currentDirectory = Directory.GetCurrentDirectory();
 
             throw new FileNotFoundException(
-                $"Test file not found: {ExampleFilePath}. Current directory: {currentDirectory}"
+                $"Test file not found: {exampleFilePath}. Current directory: {currentDirectory}"
             );
         }
 
-        var lines = AoC2023.Day01.Day01.ReadLinesFromFile(ExampleFilePath);
+        var lines = FileHelper.ReadLinesFromFile(exampleFilePath);
 
         var totalCalibration = calibration.CalculateTotalCalibration(lines);
         var expectedAnswer = GetAnswer(2023, 1, 2, "a"); // Get the answer for Part 2 Example A
@@ -123,18 +122,18 @@ public class Day01Tests
     public void Test_CalculateTotalCalibrationPartTwo_FromInputFile()
     {
         var calibration = new AoC2023.Day01.Day01(2);
-        var InputFilePath = FileHelper.GetInputFile(2023, 1);
+        var inputFilePath = FileHelper.GetInputFile(2023, 1);
 
-        if (!File.Exists(InputFilePath))
+        if (!File.Exists(inputFilePath))
         {
             var currentDirectory = Directory.GetCurrentDirectory();
 
             throw new FileNotFoundException(
-                $"Test file not found: {InputFilePath}. Current directory: {currentDirectory}"
+                $"Test file not found: {inputFilePath}. Current directory: {currentDirectory}"
             );
         }
 
-        var lines = AoC2023.Day01.Day01.ReadLinesFromFile(InputFilePath);
+        var lines = FileHelper.ReadLinesFromFile(inputFilePath);
 
         var totalCalibration = calibration.CalculateTotalCalibration(lines);
         var expectedAnswer = GetAnswer(2023, 1, 2); // Get the answer for Part 2 from input file

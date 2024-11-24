@@ -39,6 +39,13 @@ public static class FileHelper
             : filePath;
     }
 
+    public static List<string> ReadLinesFromFile(string filePath)
+    {
+        return File.Exists(filePath)
+            ? File.ReadAllLines(filePath).ToList()
+            : throw new FileNotFoundException($"File not found: {filePath}");
+    }
+
     public static string GetInputFile(int year, int day)
     {
         return GetFile(year, day, FileType.Input);

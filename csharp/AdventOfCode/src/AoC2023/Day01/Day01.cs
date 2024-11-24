@@ -91,11 +91,4 @@ public class Day01(int part)
     {
         return lines.Sum(ExtractCalibrationValue);
     }
-
-    public static List<string> ReadLinesFromFile(string filePath)
-    {
-        return File.Exists(filePath)
-            ? File.ReadAllLines(filePath).ToList()
-            : throw new FileNotFoundException($"File not found: {filePath}");
-    }
 }
