@@ -2,7 +2,7 @@ using System.Text.RegularExpressions;
 
 namespace AoC2023.Day01;
 
-public class SnowCalibration(int part)
+public class Day01(int part)
 {
     private static readonly Regex MyRegex = new(@"\d", RegexOptions.Compiled);
 
