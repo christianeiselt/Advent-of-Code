@@ -1,4 +1,4 @@
-package adventofcode.y2018;
+package AoC2018.Day01;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -21,7 +21,7 @@ public final class Day01 {
      * Path to the input file containing frequency changes.
      */
     private static final String INPUT_TXT =
-        "2018/aoc_input/day01.txt";
+        "_inputs/2018/day01.txt";
 
     /**
      * Private constructor to prevent instantiation of the utility class.
