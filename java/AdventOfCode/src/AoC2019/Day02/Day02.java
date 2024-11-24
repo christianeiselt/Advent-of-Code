@@ -122,7 +122,7 @@ public final class Day02 {
      * @param args the command-line arguments.
      */
     public static void main(final String[] args) {
-        List<Integer> program = getContent("_inputs/2019/day02.txt");
+        List<Integer> program = getContent("_puzzle_inputs_answers/2019/day02.txt");
 
         System.out.println("Part 1: " + partOne(new ArrayList<>(program)));
         System.out.println("Part 2: " + partTwo(program));

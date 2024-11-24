@@ -5,11 +5,10 @@ namespace AoC2023.Tests.Day01;
 
 public class SnowCalibrationTests
 {
-    private static readonly string TestFilePath = InputHelper.GetInput(2023, 1);
-
-    private static readonly string TestFilePathExampleA = InputHelper.GetExample(2023, 1, "ExA");
-
-    private static readonly string TestFilePathExampleB = InputHelper.GetExample(2023, 1, "ExB");
+    private static string GetAnswer(int year, int day, int part, string? suffix = null)
+    {
+        return FileHelper.GetAnswer(year, day, part, suffix);
+    }
 
     [Fact]
     public void Test_ExtractCalibrationValuePartOne_ValidInput()
@@ -58,83 +57,88 @@ public class SnowCalibrationTests
     public void Test_CalculateTotalCalibrationPartOne_FromExampleFile()
     {
         var calibration = new SnowCalibration(1);
-
-        if (!File.Exists(TestFilePathExampleA))
+        var ExampleFilePath = FileHelper.GetExampleFile(2023, 1, 1, "a");
+        if (!File.Exists(ExampleFilePath))
         {
-            string currentDirectory = Directory.GetCurrentDirectory();
+            var currentDirectory = Directory.GetCurrentDirectory();
 
             throw new FileNotFoundException(
-                $"Test file not found: {TestFilePathExampleA}. Current directory: {currentDirectory}"
+                $"Test file not found: {ExampleFilePath}. Current directory: {currentDirectory}"
             );
         }
 
-        var lines = SnowCalibration.ReadLinesFromFile(TestFilePathExampleA);
+        var lines = SnowCalibration.ReadLinesFromFile(ExampleFilePath);
 
         var totalCalibration = calibration.CalculateTotalCalibration(lines);
+        var expectedAnswer = GetAnswer(2023, 1, 1, "a"); // Get the answer for Part 1 Example A
 
-        Assert.Equal(142, totalCalibration);
+        Assert.Equal(int.Parse(expectedAnswer), totalCalibration);
     }
 
     [Fact]
     public void Test_CalculateTotalCalibrationPartOne_FromInputFile()
     {
         var calibration = new SnowCalibration(1);
-
-        if (!File.Exists(TestFilePath))
+        var InputFilePath = FileHelper.GetInputFile(2023, 1);
+        if (!File.Exists(InputFilePath))
         {
-            string currentDirectory = Directory.GetCurrentDirectory();
+            var currentDirectory = Directory.GetCurrentDirectory();
 
             throw new FileNotFoundException(
-                $"Test file not found: {TestFilePath}. Current directory: {currentDirectory}"
+                $"Test file not found: {InputFilePath}. Current directory: {currentDirectory}"
             );
         }
 
-        List<string> lines = SnowCalibration.ReadLinesFromFile(TestFilePath);
+        var lines = SnowCalibration.ReadLinesFromFile(InputFilePath);
 
-        int totalCalibration = calibration.CalculateTotalCalibration(lines);
+        var totalCalibration = calibration.CalculateTotalCalibration(lines);
+        var expectedAnswer = GetAnswer(2023, 1, 1); // Get the answer for Part 1 from input file
 
-        Assert.Equal(54_331, totalCalibration);
+        Assert.Equal(int.Parse(expectedAnswer), totalCalibration);
     }
 
     [Fact]
     public void Test_CalculateTotalCalibrationPartTwo_FromExampleFile()
     {
         var calibration = new SnowCalibration(2);
-
-        if (!File.Exists(TestFilePathExampleB))
+        var ExampleFilePath = FileHelper.GetExampleFile(2023, 1, 2, "a");
+        if (!File.Exists(ExampleFilePath))
         {
             var currentDirectory = Directory.GetCurrentDirectory();
 
             throw new FileNotFoundException(
-                $"Test file not found: {TestFilePathExampleB}. Current directory: {currentDirectory}"
+                $"Test file not found: {ExampleFilePath}. Current directory: {currentDirectory}"
             );
         }
 
-        var lines = SnowCalibration.ReadLinesFromFile(TestFilePathExampleB);
+        var lines = SnowCalibration.ReadLinesFromFile(ExampleFilePath);
 
         var totalCalibration = calibration.CalculateTotalCalibration(lines);
+        var expectedAnswer = GetAnswer(2023, 1, 2, "a"); // Get the answer for Part 2 Example A
 
-        Assert.Equal(281, totalCalibration);
+        Assert.Equal(int.Parse(expectedAnswer), totalCalibration);
     }
 
     [Fact]
     public void Test_CalculateTotalCalibrationPartTwo_FromInputFile()
     {
         var calibration = new SnowCalibration(2);
+        var InputFilePath = FileHelper.GetInputFile(2023, 1);
 
-        if (!File.Exists(TestFilePath))
+        if (!File.Exists(InputFilePath))
         {
             var currentDirectory = Directory.GetCurrentDirectory();
 
             throw new FileNotFoundException(
-                $"Test file not found: {TestFilePath}. Current directory: {currentDirectory}"
+                $"Test file not found: {InputFilePath}. Current directory: {currentDirectory}"
             );
         }
 
-        var lines = SnowCalibration.ReadLinesFromFile(TestFilePath);
+        var lines = SnowCalibration.ReadLinesFromFile(InputFilePath);
 
         var totalCalibration = calibration.CalculateTotalCalibration(lines);
+        var expectedAnswer = GetAnswer(2023, 1, 2); // Get the answer for Part 2 from input file
 
-        Assert.Equal(54_518, totalCalibration);
+        Assert.Equal(int.Parse(expectedAnswer), totalCalibration);
     }
 }

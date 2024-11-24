@@ -18,7 +18,7 @@ public class SnowCalibration(int part)
             ["six"] = "6",
             ["seven"] = "7",
             ["eight"] = "8",
-            ["nine"] = "9",
+            ["nine"] = "9"
         };
 
     public int ExtractCalibrationValue(string line)
@@ -48,10 +48,7 @@ public class SnowCalibration(int part)
 
         foreach (Match match in MyRegex.Matches(line))
         {
-            if (match.Index >= lowestIndex)
-            {
-                continue;
-            }
+            if (match.Index >= lowestIndex) continue;
 
             lowestIndex = match.Index;
             firstDigit = match.Value;
@@ -60,10 +57,7 @@ public class SnowCalibration(int part)
         foreach (var (word, digit) in SpelledOutDigits)
         {
             var index = line.IndexOf(word, StringComparison.Ordinal);
-            if (index < 0 || index >= lowestIndex)
-            {
-                continue;
-            }
+            if (index < 0 || index >= lowestIndex) continue;
 
             lowestIndex = index;
             firstDigit = digit;
@@ -77,20 +71,15 @@ public class SnowCalibration(int part)
         var (highestIndex, lastDigit) = (-1, string.Empty);
 
         foreach (Match match in MyRegex.Matches(line))
-        {
             (highestIndex, lastDigit) = (
                 match.Index > highestIndex ? match.Index : highestIndex,
                 match.Value
             );
-        }
 
         foreach (var (word, digit) in SpelledOutDigits)
         {
             var index = line.LastIndexOf(word, StringComparison.Ordinal);
-            if (index < 0 || index <= highestIndex)
-            {
-                continue;
-            }
+            if (index < 0 || index <= highestIndex) continue;
 
             (highestIndex, lastDigit) = (index, digit);
         }
@@ -98,10 +87,15 @@ public class SnowCalibration(int part)
         return lastDigit;
     }
 
-    public int CalculateTotalCalibration(List<string> lines) => lines.Sum(ExtractCalibrationValue);
+    public int CalculateTotalCalibration(List<string> lines)
+    {
+        return lines.Sum(ExtractCalibrationValue);
+    }
 
-    public static List<string> ReadLinesFromFile(string filePath) =>
-        File.Exists(filePath)
+    public static List<string> ReadLinesFromFile(string filePath)
+    {
+        return File.Exists(filePath)
             ? File.ReadAllLines(filePath).ToList()
             : throw new FileNotFoundException($"File not found: {filePath}");
+    }
 }

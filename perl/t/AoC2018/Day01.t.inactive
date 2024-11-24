@@ -1,0 +1,71 @@
+use strict;
+use warnings;
+use Test::More;
+use lib "perl/lib";
+use AoCShared::InputHelper;
+use AoC2018::Day01 qw(get_resulting_frequency get_first_duplicate process_file);
+
+use constant {
+    EXAMPLE_FILE_1A            => AoCShared::InputHelper::get_example(2018, 1, "Ex1A"),
+    EXAMPLE_FILE_1B            => AoCShared::InputHelper::get_example(2018, 1, "Ex1B"),
+    EXAMPLE_FILE_1C            => AoCShared::InputHelper::get_example(2018, 1, "Ex1C"),
+    EXAMPLE_FILE_2A            => AoCShared::InputHelper::get_example(2018, 1, "Ex2A"),
+    EXAMPLE_FILE_2B            => AoCShared::InputHelper::get_example(2018, 1, "Ex2B"),
+    EXAMPLE_FILE_2C            => AoCShared::InputHelper::get_example(2018, 1, "Ex2C"),
+    EXAMPLE_FILE_2D            => AoCShared::InputHelper::get_example(2018, 1, "Ex2D"),
+    PUZZLE_FILE               => AoCShared::InputHelper::get_input(2018, 1),
+    PART_ONE_EXAMPLE_A_SOLUTION => 3,
+    PART_ONE_EXAMPLE_B_SOLUTION => 0,
+    PART_ONE_EXAMPLE_C_SOLUTION => -6,
+    PART_ONE_PUZZLE_SOLUTION  => 490,
+    PART_TWO_EXAMPLE_A_SOLUTION => 0,
+    PART_TWO_EXAMPLE_B_SOLUTION => 10,
+    PART_TWO_EXAMPLE_C_SOLUTION => 5,
+    PART_TWO_EXAMPLE_D_SOLUTION => 14,
+    PART_TWO_PUZZLE_SOLUTION  => 70_357,
+};
+
+my $EXAMPLE_INPUT_REF = AoCShared::InputHelper->get_file_content(EXAMPLE_FILE);
+my $PUZZLE_INPUT_REF = AoCShared::InputHelper->get_file_content(PUZZLE_FILE);
+
+
+
+is( AoC2018::Day01->solve_part_1($EXAMPLE_INPUT_REF),
+    PART_ONE_EXAMPLE_SOLUTION, 'Example solution of Part One is correct.' );
+
+is( AoC2018::Day01->solve_part_1($PUZZLE_INPUT_REF),
+    PART_ONE_PUZZLE_SOLUTION, 'Puzzle solution of Part One is correct.' );
+
+is( AoC2018::Day01->solve_part_2($EXAMPLE_INPUT_REF),
+    PART_TWO_EXAMPLE_SOLUTION, 'Example solution of Part Two is correct.' );
+
+is( AoC2018::Day01->solve_part_2($PUZZLE_INPUT_REF),
+    PART_TWO_PUZZLE_SOLUTION, 'Puzzle solution of Part Two is correct.' );
+
+# Test data setup
+my $test_file = 'test_input.txt';
+open my $fh, '>', $test_file or die "Could not create test file: $!";
+print $fh "+1\n-2\n+3\n+1\n";
+close $fh;
+
+# Test read_file_content (from Utils)
+my $file_content = read_file_content($test_file);
+is_deeply($file_content, [1, -2, 3, 1], 'read_file_content() works correctly');
+
+# Test get_resulting_frequency
+my $resulting_frequency = get_resulting_frequency($file_content);
+is($resulting_frequency, 3, 'get_resulting_frequency() works correctly');
+
+# Test get_first_duplicate
+my $first_duplicate = get_first_duplicate($file_content);
+is($first_duplicate, 2, 'get_first_duplicate() works correctly');
+
+# Test process_file
+my ($freq, $duplicate) = process_file($test_file);
+is($freq, 3, 'process_file() correctly calculates the resulting frequency');
+is($duplicate, 2, 'process_file() correctly finds the first duplicate frequency');
+
+# Clean up test file
+unlink $test_file;
+
+done_testing();
