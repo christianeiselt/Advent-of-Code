@@ -51,7 +51,7 @@ public static class FileHelper
         return GetFile(year, day, FileType.Input);
     }
 
-    public static string GetExampleFile(int year, int day, int part, string suffix)
+    public static string GetExampleFile(int year, int day, int part, string? suffix)
     {
         if (string.IsNullOrEmpty(suffix))
             throw new ArgumentException("Suffix is required for example files", nameof(suffix));
