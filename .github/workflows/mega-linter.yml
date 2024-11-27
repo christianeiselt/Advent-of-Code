@@ -54,7 +54,7 @@ jobs:
       - name: Create Pull Request with applied fixes
         id: cpr
         if: steps.ml.outputs.has_updated_sources == 1 && env.APPLY_FIXES_MODE == 'pull_request'
-        uses: peter-evans/create-pull-request@ce71ba0ccb44f35a485ab0d9d560c439917c8b60
+        uses: peter-evans/create-pull-request@25b6871a4ebe4c3585f47c7a687ac6fd0ec0e32d
         with:
           token: ${{ secrets.PAT || secrets.GITHUB_TOKEN }}
           commit-message: "[MegaLinter] Apply linters automatic fixes"
