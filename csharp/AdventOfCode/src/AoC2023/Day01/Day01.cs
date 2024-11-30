@@ -4,9 +4,11 @@
 
 namespace AoC2023.Day01;
 
+using AoCShared;
+
 using System.Text.RegularExpressions;
 
-public class Day01(int part)
+public class Day01(Part part)
 {
     private static readonly Regex MyRegex = new(@"\d", RegexOptions.Compiled);
 
@@ -96,12 +98,12 @@ public class Day01(int part)
 
     private string FindFirstDigit(string line)
     {
-        return part == 1 ? MyRegex.Match(line).Value : FindDigitWithLowestIndex(line);
+        return part == Part.One ? MyRegex.Match(line).Value : FindDigitWithLowestIndex(line);
     }
 
     private string FindLastDigit(string line)
     {
-        return part == 1
+        return part == Part.One
             ? MyRegex.Match(new string(line.Reverse().ToArray())).Value
             : FindDigitWithHighestIndex(line);
     }

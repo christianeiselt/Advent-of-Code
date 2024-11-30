@@ -8,7 +8,7 @@ public class FileHelperTests
 {
     private const int TestYear = 2018;
     private const int TestDay = 1;
-    private const int TestPart = 1;
+    private const Part TestPart = Part.One;
     private const string TestBaseDir = "../../../../../../../_puzzle_inputs_answers";
 
     [Fact]
@@ -39,7 +39,7 @@ public class FileHelperTests
         var exampleFile = Path.Combine(
             TestBaseDir,
             TestYear.ToString(),
-            $"day{TestDay:D2}_part{TestPart}_example_{suffix}_input.txt");
+            $"day{TestDay:D2}_part{(int)TestPart}_example_{suffix}_input.txt");
 
         // Act
         var result = FileHelper.GetExampleFile(TestYear, TestDay, TestPart, suffix);

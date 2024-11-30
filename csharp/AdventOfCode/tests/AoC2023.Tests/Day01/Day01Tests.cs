@@ -11,7 +11,7 @@ public class Day01Tests
     [Fact]
     public void Test_ExtractCalibrationValuePartOne_ValidInput()
     {
-        var calibration = new AoC2023.Day01.Day01(1);
+        var calibration = new AoC2023.Day01.Day01(Part.One);
 
         Assert.Equal(12, calibration.ExtractCalibrationValue("1abc2")); // First: 1, Last: 2
         Assert.Equal(38, calibration.ExtractCalibrationValue("pqr3stu8vwx")); // First: 3, Last: 8
@@ -22,7 +22,7 @@ public class Day01Tests
     [Fact]
     public void Test_ExtractCalibrationValuePartTwo_ValidInput()
     {
-        var calibration = new AoC2023.Day01.Day01(2);
+        var calibration = new AoC2023.Day01.Day01(Part.Two);
 
         Assert.Equal(29, calibration.ExtractCalibrationValue("two1nine")); // First: 2, Last: 9
         Assert.Equal(83, calibration.ExtractCalibrationValue("eightwothree")); // First: 8, Last: 3
@@ -36,7 +36,7 @@ public class Day01Tests
     [Fact]
     public void Test_ExtractCalibrationValue_EmptyOrNoDigits()
     {
-        var calibration = new AoC2023.Day01.Day01(1);
+        var calibration = new AoC2023.Day01.Day01(Part.One);
 
         Assert.Equal(0, calibration.ExtractCalibrationValue(string.Empty));
         Assert.Equal(0, calibration.ExtractCalibrationValue("abcdef"));
@@ -45,7 +45,7 @@ public class Day01Tests
     [Fact]
     public void Test_CalculateTotalCalibration()
     {
-        var calibration = new AoC2023.Day01.Day01(1);
+        var calibration = new AoC2023.Day01.Day01(Part.One);
         var lines = new List<string> { "1abc2", "pqr3stu8vwx", "a1b2c3d4e5f", "treb7uchet" };
 
         Assert.Equal(142, calibration.CalculateTotalCalibration(lines));
@@ -54,8 +54,8 @@ public class Day01Tests
     [Fact]
     public void Test_CalculateTotalCalibrationPartOne_FromExampleFile()
     {
-        var calibration = new AoC2023.Day01.Day01(1);
-        var exampleFilePath = FileHelper.GetExampleFile(2023, 1, 1, "a");
+        var calibration = new AoC2023.Day01.Day01(Part.One);
+        var exampleFilePath = FileHelper.GetExampleFile(2023, 1, Part.One, "a");
         if (!File.Exists(exampleFilePath))
         {
             var currentDirectory = Directory.GetCurrentDirectory();
@@ -67,7 +67,7 @@ public class Day01Tests
         var lines = FileHelper.ReadLinesFromFile(exampleFilePath);
 
         var totalCalibration = calibration.CalculateTotalCalibration(lines);
-        var expectedAnswer = FileHelper.GetAnswer(2023, 1, 1, "a"); // Get the answer for Part 1 Example A
+        var expectedAnswer = FileHelper.GetAnswer(2023, 1, Part.One, "a"); // Get the answer for Part 1 Example A
 
         Assert.Equal(int.Parse(expectedAnswer), totalCalibration);
     }
@@ -75,7 +75,7 @@ public class Day01Tests
     [Fact]
     public void Test_CalculateTotalCalibrationPartOne_FromInputFile()
     {
-        var calibration = new AoC2023.Day01.Day01(1);
+        var calibration = new AoC2023.Day01.Day01(Part.One);
         var inputFilePath = FileHelper.GetInputFile(2023, 1);
         if (!File.Exists(inputFilePath))
         {
@@ -88,7 +88,7 @@ public class Day01Tests
         var lines = FileHelper.ReadLinesFromFile(inputFilePath);
 
         var totalCalibration = calibration.CalculateTotalCalibration(lines);
-        var expectedAnswer = FileHelper.GetAnswer(2023, 1, 1); // Get the answer for Part 1 from input file
+        var expectedAnswer = FileHelper.GetAnswer(2023, 1, Part.One); // Get the answer for Part 1 from input file
 
         Assert.Equal(int.Parse(expectedAnswer), totalCalibration);
     }
@@ -96,8 +96,8 @@ public class Day01Tests
     [Fact]
     public void Test_CalculateTotalCalibrationPartTwo_FromExampleFile()
     {
-        var calibration = new AoC2023.Day01.Day01(2);
-        var exampleFilePath = FileHelper.GetExampleFile(2023, 1, 2, "a");
+        var calibration = new AoC2023.Day01.Day01(Part.Two);
+        var exampleFilePath = FileHelper.GetExampleFile(2023, 1, Part.Two, "a");
         if (!File.Exists(exampleFilePath))
         {
             var currentDirectory = Directory.GetCurrentDirectory();
@@ -109,7 +109,7 @@ public class Day01Tests
         var lines = FileHelper.ReadLinesFromFile(exampleFilePath);
 
         var totalCalibration = calibration.CalculateTotalCalibration(lines);
-        var expectedAnswer = FileHelper.GetAnswer(2023, 1, 2, "a"); // Get the answer for Part 2 Example A
+        var expectedAnswer = FileHelper.GetAnswer(2023, 1, Part.Two, "a"); // Get the answer for Part 2 Example A
 
         Assert.Equal(int.Parse(expectedAnswer), totalCalibration);
     }
@@ -117,7 +117,7 @@ public class Day01Tests
     [Fact]
     public void Test_CalculateTotalCalibrationPartTwo_FromInputFile()
     {
-        var calibration = new AoC2023.Day01.Day01(2);
+        var calibration = new AoC2023.Day01.Day01(Part.Two);
         var inputFilePath = FileHelper.GetInputFile(2023, 1);
 
         if (!File.Exists(inputFilePath))
@@ -131,7 +131,7 @@ public class Day01Tests
         var lines = FileHelper.ReadLinesFromFile(inputFilePath);
 
         var totalCalibration = calibration.CalculateTotalCalibration(lines);
-        var expectedAnswer = FileHelper.GetAnswer(2023, 1, 2); // Get the answer for Part 2 from input file
+        var expectedAnswer = FileHelper.GetAnswer(2023, 1, Part.Two); // Get the answer for Part 2 from input file
 
         Assert.Equal(int.Parse(expectedAnswer), totalCalibration);
     }

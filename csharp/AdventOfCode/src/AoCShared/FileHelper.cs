@@ -8,13 +8,6 @@ public static class FileHelper
 {
     private const string BaseDir = "../../../../../../../_puzzle_inputs_answers";
 
-    private enum FileType
-    {
-        Input,
-        Example,
-        Answer,
-    }
-
     public static List<string> ReadLinesFromFile(string filePath)
     {
         return File.Exists(filePath)
@@ -27,36 +20,31 @@ public static class FileHelper
         return GetFile(year, day, FileType.Input);
     }
 
-    public static string GetExampleFile(int year, int day, int part, string? suffix)
+    public static string GetExampleFile(int year, int day, Part part, string suffix)
     {
-        if (string.IsNullOrEmpty(suffix))
-        {
-            throw new ArgumentException("Suffix is required for example files", nameof(suffix));
-        }
-
         return GetFile(year, day, FileType.Example, part, suffix);
     }
 
-    public static string GetAnswer(int year, int day, int part, string? suffix = null)
+    public static string GetAnswer(int year, int day, Part part, string? suffix = null)
     {
         return GetFile(year, day, FileType.Answer, part, suffix);
     }
 
-    private static string ConstructFileName(int day, FileType type, int part, string? suffix)
+    private static string ConstructFileName(int day, FileType type, Part part, string? suffix)
     {
         return type switch
         {
             FileType.Input => $"day{day:D2}_input.txt",
             FileType.Example when !string.IsNullOrEmpty(suffix) =>
-                $"day{day:D2}_part{part}_example_{suffix}_input.txt",
+                $"day{day:D2}_part{(int)part}_example_{suffix}_input.txt",
             FileType.Answer when !string.IsNullOrEmpty(suffix) =>
-                $"day{day:D2}_part{part}_example_{suffix}_answer.txt",
-            FileType.Answer => $"day{day:D2}_part{part}_answer.txt",
+                $"day{day:D2}_part{(int)part}_example_{suffix}_answer.txt",
+            FileType.Answer => $"day{day:D2}_part{(int)part}_answer.txt",
             _ => throw new ArgumentException("Invalid file type or missing suffix for example files."),
         };
     }
 
-    private static string ValidateAndGetFilePath(int year, int day, FileType type, int part, string? suffix = null)
+    private static string ValidateAndGetFilePath(int year, int day, FileType type, Part part, string? suffix = null)
     {
         var fileName = ConstructFileName(day, type, part, suffix);
         var filePath = Path.Combine(BaseDir, year.ToString(), fileName);
@@ -69,7 +57,7 @@ public static class FileHelper
         return filePath;
     }
 
-    private static string GetFile(int year, int day, FileType type, int part = 1, string? suffix = null)
+    private static string GetFile(int year, int day, FileType type, Part part = Part.One, string? suffix = null)
     {
         var filePath = ValidateAndGetFilePath(year, day, type, part, suffix);
 
