@@ -1,14 +1,13 @@
-using AoCShared;
+// <copyright file="Day01Tests.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
 namespace AoC2023.Tests.Day01;
 
+using AoCShared;
+
 public class Day01Tests
 {
-    private static string GetAnswer(int year, int day, int part, string? suffix = null)
-    {
-        return FileHelper.GetAnswer(year, day, part, suffix);
-    }
-
     [Fact]
     public void Test_ExtractCalibrationValuePartOne_ValidInput()
     {
@@ -39,7 +38,7 @@ public class Day01Tests
     {
         var calibration = new AoC2023.Day01.Day01(1);
 
-        Assert.Equal(0, calibration.ExtractCalibrationValue(""));
+        Assert.Equal(0, calibration.ExtractCalibrationValue(string.Empty));
         Assert.Equal(0, calibration.ExtractCalibrationValue("abcdef"));
     }
 
@@ -62,14 +61,13 @@ public class Day01Tests
             var currentDirectory = Directory.GetCurrentDirectory();
 
             throw new FileNotFoundException(
-                $"Test file not found: {exampleFilePath}. Current directory: {currentDirectory}"
-            );
+                $"Test file not found: {exampleFilePath}. Current directory: {currentDirectory}");
         }
 
         var lines = FileHelper.ReadLinesFromFile(exampleFilePath);
 
         var totalCalibration = calibration.CalculateTotalCalibration(lines);
-        var expectedAnswer = GetAnswer(2023, 1, 1, "a"); // Get the answer for Part 1 Example A
+        var expectedAnswer = FileHelper.GetAnswer(2023, 1, 1, "a"); // Get the answer for Part 1 Example A
 
         Assert.Equal(int.Parse(expectedAnswer), totalCalibration);
     }
@@ -84,14 +82,13 @@ public class Day01Tests
             var currentDirectory = Directory.GetCurrentDirectory();
 
             throw new FileNotFoundException(
-                $"Test file not found: {inputFilePath}. Current directory: {currentDirectory}"
-            );
+                $"Test file not found: {inputFilePath}. Current directory: {currentDirectory}");
         }
 
         var lines = FileHelper.ReadLinesFromFile(inputFilePath);
 
         var totalCalibration = calibration.CalculateTotalCalibration(lines);
-        var expectedAnswer = GetAnswer(2023, 1, 1); // Get the answer for Part 1 from input file
+        var expectedAnswer = FileHelper.GetAnswer(2023, 1, 1); // Get the answer for Part 1 from input file
 
         Assert.Equal(int.Parse(expectedAnswer), totalCalibration);
     }
@@ -106,14 +103,13 @@ public class Day01Tests
             var currentDirectory = Directory.GetCurrentDirectory();
 
             throw new FileNotFoundException(
-                $"Test file not found: {exampleFilePath}. Current directory: {currentDirectory}"
-            );
+                $"Test file not found: {exampleFilePath}. Current directory: {currentDirectory}");
         }
 
         var lines = FileHelper.ReadLinesFromFile(exampleFilePath);
 
         var totalCalibration = calibration.CalculateTotalCalibration(lines);
-        var expectedAnswer = GetAnswer(2023, 1, 2, "a"); // Get the answer for Part 2 Example A
+        var expectedAnswer = FileHelper.GetAnswer(2023, 1, 2, "a"); // Get the answer for Part 2 Example A
 
         Assert.Equal(int.Parse(expectedAnswer), totalCalibration);
     }
@@ -129,14 +125,13 @@ public class Day01Tests
             var currentDirectory = Directory.GetCurrentDirectory();
 
             throw new FileNotFoundException(
-                $"Test file not found: {inputFilePath}. Current directory: {currentDirectory}"
-            );
+                $"Test file not found: {inputFilePath}. Current directory: {currentDirectory}");
         }
 
         var lines = FileHelper.ReadLinesFromFile(inputFilePath);
 
         var totalCalibration = calibration.CalculateTotalCalibration(lines);
-        var expectedAnswer = GetAnswer(2023, 1, 2); // Get the answer for Part 2 from input file
+        var expectedAnswer = FileHelper.GetAnswer(2023, 1, 2); // Get the answer for Part 2 from input file
 
         Assert.Equal(int.Parse(expectedAnswer), totalCalibration);
     }

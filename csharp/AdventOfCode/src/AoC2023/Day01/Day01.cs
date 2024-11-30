@@ -1,6 +1,10 @@
-using System.Text.RegularExpressions;
+// <copyright file="Day01.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
 namespace AoC2023.Day01;
+
+using System.Text.RegularExpressions;
 
 public class Day01(int part)
 {
@@ -18,27 +22,20 @@ public class Day01(int part)
             ["six"] = "6",
             ["seven"] = "7",
             ["eight"] = "8",
-            ["nine"] = "9"
+            ["nine"] = "9",
         };
 
     public int ExtractCalibrationValue(string line)
     {
-        var (firstDigit, lastDigit) = (FindFirstDigit(line), FindLastDigit(line));
+        var (firstDigit, lastDigit) = (this.FindFirstDigit(line), this.FindLastDigit(line));
         return string.IsNullOrEmpty(firstDigit) || string.IsNullOrEmpty(lastDigit)
             ? 0
             : int.Parse($"{firstDigit}{lastDigit}");
     }
 
-    private string FindFirstDigit(string line)
+    public int CalculateTotalCalibration(List<string> lines)
     {
-        return part == 1 ? MyRegex.Match(line).Value : FindDigitWithLowestIndex(line);
-    }
-
-    private string FindLastDigit(string line)
-    {
-        return part == 1
-            ? MyRegex.Match(new string(line.Reverse().ToArray())).Value
-            : FindDigitWithHighestIndex(line);
+        return lines.Sum(this.ExtractCalibrationValue);
     }
 
     private static string FindDigitWithLowestIndex(string line)
@@ -48,7 +45,10 @@ public class Day01(int part)
 
         foreach (Match match in MyRegex.Matches(line))
         {
-            if (match.Index >= lowestIndex) continue;
+            if (match.Index >= lowestIndex)
+            {
+                continue;
+            }
 
             lowestIndex = match.Index;
             firstDigit = match.Value;
@@ -57,7 +57,10 @@ public class Day01(int part)
         foreach (var (word, digit) in SpelledOutDigits)
         {
             var index = line.IndexOf(word, StringComparison.Ordinal);
-            if (index < 0 || index >= lowestIndex) continue;
+            if (index < 0 || index >= lowestIndex)
+            {
+                continue;
+            }
 
             lowestIndex = index;
             firstDigit = digit;
@@ -71,15 +74,19 @@ public class Day01(int part)
         var (highestIndex, lastDigit) = (-1, string.Empty);
 
         foreach (Match match in MyRegex.Matches(line))
+        {
             (highestIndex, lastDigit) = (
                 match.Index > highestIndex ? match.Index : highestIndex,
-                match.Value
-            );
+                match.Value);
+        }
 
         foreach (var (word, digit) in SpelledOutDigits)
         {
             var index = line.LastIndexOf(word, StringComparison.Ordinal);
-            if (index < 0 || index <= highestIndex) continue;
+            if (index < 0 || index <= highestIndex)
+            {
+                continue;
+            }
 
             (highestIndex, lastDigit) = (index, digit);
         }
@@ -87,8 +94,15 @@ public class Day01(int part)
         return lastDigit;
     }
 
-    public int CalculateTotalCalibration(List<string> lines)
+    private string FindFirstDigit(string line)
     {
-        return lines.Sum(ExtractCalibrationValue);
+        return part == 1 ? MyRegex.Match(line).Value : FindDigitWithLowestIndex(line);
+    }
+
+    private string FindLastDigit(string line)
+    {
+        return part == 1
+            ? MyRegex.Match(new string(line.Reverse().ToArray())).Value
+            : FindDigitWithHighestIndex(line);
     }
 }

@@ -1,3 +1,7 @@
+// <copyright file="FileHelperTests.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
 namespace AoCShared.Tests;
 
 public class FileHelperTests
@@ -32,7 +36,9 @@ public class FileHelperTests
     {
         // Arrange
         const string? suffix = "a";
-        var exampleFile = Path.Combine(TestBaseDir, TestYear.ToString(),
+        var exampleFile = Path.Combine(
+            TestBaseDir,
+            TestYear.ToString(),
             $"day{TestDay:D2}_part{TestPart}_example_{suffix}_input.txt");
 
         // Act
@@ -87,7 +93,8 @@ public class FileHelperTests
     public void GetFile_InvalidFileType_ThrowsFileNotFoundException()
     {
         // Act & Assert
-        Assert.Throws<FileNotFoundException>(() =>
-            FileHelper.GetExampleFile(TestYear, TestDay, TestPart, "invalidSuffix"));
+        Assert.Throws<FileNotFoundException>(
+            () =>
+                FileHelper.GetExampleFile(TestYear, TestDay, TestPart, "invalidSuffix"));
     }
 }
