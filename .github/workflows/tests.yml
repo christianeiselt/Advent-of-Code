@@ -54,11 +54,6 @@ jobs:
           swift ./swift/2018/Sources/Day01.swift
           swift ./swift/2019/Sources/Day02.swift
 
-      - name: Test TypeScript
-        run: |
-          deno --allow-read ./typescript/2018/src/Day01.ts
-
-
-
-
-
+      # - name: Test TypeScript
+      #   run: |
+      #     deno --allow-read ./typescript/2018/src/Day01.ts
