@@ -1,4 +1,4 @@
-package AoC2019.Day02;
+package aoc.year2019.Day02;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -122,7 +122,9 @@ public final class Day02 {
      * @param args the command-line arguments.
      */
     public static void main(final String[] args) {
-        List<Integer> program = getContent("_puzzle_inputs_answers/2019/day02.txt");
+        List<Integer> program = getContent(
+            "_puzzle_inputs_answers/2019/day02_input.txt"
+        );
 
         System.out.println("Part 1: " + partOne(new ArrayList<>(program)));
         System.out.println("Part 2: " + partTwo(program));
