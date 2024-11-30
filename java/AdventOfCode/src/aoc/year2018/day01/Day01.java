@@ -21,7 +21,7 @@ public final class Day01 {
      * Path to the input file containing frequency changes.
      */
     private static final String INPUT_TXT =
-        "_puzzle_inputs_answers/2018/day01_input.txt";
+        "../../../_puzzle_inputs_answers/2018/day01_input.txt";
 
     /**
      * Private constructor to prevent instantiation of the utility class.

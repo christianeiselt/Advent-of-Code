@@ -123,7 +123,7 @@ public final class Day02 {
      */
     public static void main(final String[] args) {
         List<Integer> program = getContent(
-            "_puzzle_inputs_answers/2019/day02_input.txt"
+            "../../../_puzzle_inputs_answers/2019/day02_input.txt"
         );
 
         System.out.println("Part 1: " + partOne(new ArrayList<>(program)));
