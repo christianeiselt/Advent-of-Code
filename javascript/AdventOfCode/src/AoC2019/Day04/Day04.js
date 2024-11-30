@@ -73,10 +73,10 @@ function countCandidates (input, part) {
 }
 
 // Tests
-console.log(containsDoubleDigit(111111) === true)
-console.log(containsDoubleDigit(122234) === false)
-console.log(containsDoubleDigit(112223) === true)
-console.log(containsDoubleDigit(111222) === false)
+// console.log(containsDoubleDigit(111111) === true)
+// console.log(containsDoubleDigit(122234) === false)
+// console.log(containsDoubleDigit(112223) === true)
+// console.log(containsDoubleDigit(111222) === false)
 
 // Solve Part 1 and Part 2
 countCandidates(input, 1) // Solve part 1

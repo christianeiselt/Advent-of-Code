@@ -41,8 +41,8 @@ jobs:
           node ./javascript/AdventOfCode/src/AoC2018/Day01/Day01.js
           node ./javascript/AdventOfCode/src/AoC2019/Day01/Day01.js
           node ./javascript/AdventOfCode/src/AoC2019/Day02/Day02.js
+          node ./javascript/AdventOfCode/src/AoC2019/Day04/Day04.js
           node ./javascript/AdventOfCode/src/AoC2019/Day04/Day04b.js
-          node ./javascript/AdventOfCode/src/AoC2019/Day04/Solution.js
 
       - name: Test Perl
         run: |
