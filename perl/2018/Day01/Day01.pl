@@ -15,7 +15,7 @@ sub getFileContent
   while (my $row = <$fh>)
   {
     chomp $row;
-    $row =~ s/^\+//;
+    $row =~ s/^\+//msx;
     my $number = $row;
 	push(@output, $number);
   }
@@ -59,6 +59,8 @@ sub getDuplicate
 			}
 		}
 	}
+
+  return;
 }
 
 print("The resulting frequency after 1 loop is; ".getResultingFrequency(getFileContent("_puzzle_inputs_answers/2018/day01_input.txt"))."\n");

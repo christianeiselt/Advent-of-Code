@@ -13,7 +13,7 @@ sub getFileContent
     while (my $row = <$fh>)
     {
         chomp $row;
-        $row =~ s/^\+//;
+        $row =~ s/^\+//msx;
         my $number = $row;
         push(@output, $number);
     }
@@ -67,14 +67,11 @@ sub runProgram {
             } else {
                 return \@programCode;
             }
-
         }
-
-
     }
 
-
     # print(Dumper(@program));
+    return;
 }
 
 sub runPrograms {
@@ -84,6 +81,8 @@ sub runPrograms {
     foreach (@programCodes) {
         runProgram($_);
     }
+
+    return;
 }
 
 # my $fileContent = getFileContent("_puzzle_inputs_answers/2019/Day02_input.txt");

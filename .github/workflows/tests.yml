@@ -29,13 +29,13 @@ jobs:
 
       - name: Test C#
         run: dotnet test ./csharp/AdventOfCode/AdventOfCode.sln
-    
+
       # - name: Test Java
       #   run: |
       #     cd java/AdventOfCode/src
       #     java ./aoc/year2018/Day01/Day01.java
       #     java ./aoc/year2019/Day02/Day02.java
-    
+
       - name: Test JavaScript
         run: |
           node ./javascript/AdventOfCode/src/AoC2018/Day01/Day01.js
