@@ -1,4 +1,4 @@
-package aoc.year2018.Day01;
+package aoc.year2018.day01;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -15,7 +15,7 @@ import java.util.HashSet;
  *    changes.
  * </p>
  */
-public final class Day01 {
+public final class day01 {
 
     /**
      * Path to the input file containing frequency changes.
@@ -26,7 +26,7 @@ public final class Day01 {
     /**
      * Private constructor to prevent instantiation of the utility class.
      */
-    private Day01() {
+    private day01() {
         throw new UnsupportedOperationException(
             "Utility class should not be instantiated."
         );

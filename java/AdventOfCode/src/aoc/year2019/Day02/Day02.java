@@ -1,4 +1,4 @@
-package aoc.year2019.Day02;
+package aoc.year2019.day02;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -9,7 +9,7 @@ import java.util.ArrayList;
 /**
  * Utility class for solving Advent of Code 2019, Day 02.
  */
-public final class Day02 {
+public final class day02 {
 
     /** The opcode for halting the program. */
     private static final int HALT_OPCODE = 99;
@@ -31,7 +31,7 @@ public final class Day02 {
     private static final int THIRD_POSITION = 3;
 
     // Private constructor to prevent instantiation
-    private Day02() {
+    private day02() {
         throw new UnsupportedOperationException(
             "Utility class should not be instantiated."
         );
