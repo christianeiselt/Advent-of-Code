@@ -1,8 +1,7 @@
 // https://adventofcode.com/2018/day/1
 
-// @ts-ignore: ignore ts-specific rules
-import { readFileSync } from 'fs'
-const text = readFileSync('_puzzle_inputs_answers/2018/day01.txt', 'utf8')
+const fs = require('fs')
+const text = fs.readFileSync('_puzzle_inputs_answers/2018/day01_input.txt', 'utf8')
 const splitLines = (/** @type {string} */ str) => str.split(/\r?\n/)
 const changes = splitLines(text)
 

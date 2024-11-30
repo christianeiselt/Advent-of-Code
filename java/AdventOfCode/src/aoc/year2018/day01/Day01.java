@@ -1,4 +1,4 @@
-package aoc.year2018.day01;
+package aoc.year2018.Day01;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
