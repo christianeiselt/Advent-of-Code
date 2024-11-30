@@ -25,7 +25,12 @@ public static class FileHelper
         return GetFile(year, day, FileType.Example, part, suffix);
     }
 
-    public static string GetAnswer(int year, int day, Part part, string? suffix = null)
+    public static string GetAnswer(int year, int day, Part part)
+    {
+        return GetFile(year, day, FileType.Answer, part);
+    }
+
+    public static string GetAnswer(int year, int day, Part part, string suffix)
     {
         return GetFile(year, day, FileType.Answer, part, suffix);
     }
