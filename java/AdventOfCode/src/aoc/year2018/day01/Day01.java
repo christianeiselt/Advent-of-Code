@@ -15,7 +15,7 @@ import java.util.HashSet;
  *    changes.
  * </p>
  */
-public final class day01 {
+public final class Day01 {
 
     /**
      * Path to the input file containing frequency changes.
@@ -26,7 +26,7 @@ public final class day01 {
     /**
      * Private constructor to prevent instantiation of the utility class.
      */
-    private day01() {
+    private Day01() {
         throw new UnsupportedOperationException(
             "Utility class should not be instantiated."
         );
